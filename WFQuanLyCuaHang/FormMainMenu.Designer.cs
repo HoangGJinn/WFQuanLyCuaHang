@@ -40,8 +40,8 @@
             this.btnProducts = new FontAwesome.Sharp.IconButton();
             this.btnDashboard = new FontAwesome.Sharp.IconButton();
             this.pnlLogo = new System.Windows.Forms.Panel();
-            this.lblDatetime = new System.Windows.Forms.Label();
             this.btnHome = new System.Windows.Forms.PictureBox();
+            this.lblDatetime = new System.Windows.Forms.Label();
             this.pnlTitleBar = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnMinimize = new FontAwesome.Sharp.IconPictureBox();
@@ -293,19 +293,6 @@
             this.pnlLogo.Size = new System.Drawing.Size(198, 117);
             this.pnlLogo.TabIndex = 0;
             // 
-            // lblDatetime
-            // 
-            this.lblDatetime.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDatetime.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDatetime.ForeColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDatetime.Location = new System.Drawing.Point(159, 15);
-            this.lblDatetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDatetime.Name = "lblDatetime";
-            this.lblDatetime.Size = new System.Drawing.Size(196, 37);
-            this.lblDatetime.TabIndex = 5;
-            this.lblDatetime.Text = "DateTime !!!";
-            this.lblDatetime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnHome
             // 
             this.btnHome.Image = global::WFQuanLyCuaHang.Properties.Resources._ff00cc_removebg_preview;
@@ -317,6 +304,19 @@
             this.btnHome.TabIndex = 0;
             this.btnHome.TabStop = false;
             this.btnHome.Click += new System.EventHandler(this.btnHome_Click);
+            // 
+            // lblDatetime
+            // 
+            this.lblDatetime.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblDatetime.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDatetime.ForeColor = System.Drawing.Color.WhiteSmoke;
+            this.lblDatetime.Location = new System.Drawing.Point(159, 15);
+            this.lblDatetime.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDatetime.Name = "lblDatetime";
+            this.lblDatetime.Size = new System.Drawing.Size(346, 37);
+            this.lblDatetime.TabIndex = 5;
+            this.lblDatetime.Text = "DateTime !!!";
+            this.lblDatetime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlTitleBar
             // 
@@ -406,7 +406,7 @@
             this.lblTitleChildForm.Location = new System.Drawing.Point(47, 24);
             this.lblTitleChildForm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleChildForm.Name = "lblTitleChildForm";
-            this.lblTitleChildForm.Size = new System.Drawing.Size(50, 19);
+            this.lblTitleChildForm.Size = new System.Drawing.Size(73, 24);
             this.lblTitleChildForm.TabIndex = 1;
             this.lblTitleChildForm.Text = "Home";
             // 
