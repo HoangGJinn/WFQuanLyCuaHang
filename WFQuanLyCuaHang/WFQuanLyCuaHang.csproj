@@ -1,0 +1,446 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6593B8CA-151C-4B1A-8C17-AE9D31821E77}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WFQuanLyCuaHang</RootNamespace>
+    <AssemblyName>WFQuanLyCuaHang</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BusinessLogicLayer">
+      <HintPath>..\BusinessLogicLayer\bin\Debug\BusinessLogicLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAccessLayer">
+      <HintPath>..\DataAccessLayer\bin\Debug\DataAccessLayer.dll</HintPath>
+    </Reference>
+    <Reference Include="FontAwesome.Sharp, Version=6.6.0.0, Culture=neutral, PublicKeyToken=d16d1e4e568ec10f, processorArchitecture=MSIL">
+      <HintPath>packages\FontAwesome.Sharp.6.6.0\lib\net48\FontAwesome.Sharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
+      <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CartItem.cs" />
+    <Compile Include="Common\SessionContext.cs" />
+    <Compile Include="FForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FForgotPassword.Designer.cs">
+      <DependentUpon>FForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FAdminAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAdminAccount.Designer.cs">
+      <DependentUpon>FAdminAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCreateAccountNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCreateAccountNV.Designer.cs">
+      <DependentUpon>FCreateAccountNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCreateOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCreateOrder.Designer.cs">
+      <DependentUpon>FCreateOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCustomerAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCustomerAccount.Designer.cs">
+      <DependentUpon>FCustomerAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FEmployeeAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FEmployeeAccount.Designer.cs">
+      <DependentUpon>FEmployeeAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FOverview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FOverview.Designer.cs">
+      <DependentUpon>FOverview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FPendingOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FPendingOrder.Designer.cs">
+      <DependentUpon>FPendingOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FSoldProducts.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FSoldProducts.Designer.cs">
+      <DependentUpon>FSoldProducts.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FStockQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FStockQuantity.Designer.cs">
+      <DependentUpon>FStockQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FRegister.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FRegister.Designer.cs">
+      <DependentUpon>FRegister.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMainMenu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMainMenu.Designer.cs">
+      <DependentUpon>FormMainMenu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAddOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddOrder.Designer.cs">
+      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormCustomers.Designer.cs">
+      <DependentUpon>FormCustomers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormDashboard.Designer.cs">
+      <DependentUpon>FormDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormEmployees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormEmployees.Designer.cs">
+      <DependentUpon>FormEmployees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormHomeDesktop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormHomeDesktop.Designer.cs">
+      <DependentUpon>FormHomeDesktop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOrderDetail.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOrderDetail.Designer.cs">
+      <DependentUpon>FormOrderDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormOrders.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormOrders.Designer.cs">
+      <DependentUpon>FormOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormProduct.Designer.cs">
+      <DependentUpon>FormProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormStatistics.Designer.cs">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FResetPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FResetPassword.Designer.cs">
+      <DependentUpon>FResetPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FVerify.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FVerify.Designer.cs">
+      <DependentUpon>FVerify.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductControl\ucProduct.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductControl\ucProduct.Designer.cs">
+      <DependentUpon>ucProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductControl\UC_Lap.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductControl\UC_Lap.Designer.cs">
+      <DependentUpon>UC_Lap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductControl\UC_Orther.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ProductControl\UC_Orther.Designer.cs">
+      <DependentUpon>UC_Orther.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resources\CPass.cs" />
+    <EmbeddedResource Include="FForgotPassword.resx">
+      <DependentUpon>FForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAdminAccount.resx">
+      <DependentUpon>FAdminAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCreateAccountNV.resx">
+      <DependentUpon>FCreateAccountNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCreateOrder.resx">
+      <DependentUpon>FCreateOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCustomerAccount.resx">
+      <DependentUpon>FCustomerAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FEmployeeAccount.resx">
+      <DependentUpon>FEmployeeAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FOverview.resx">
+      <DependentUpon>FOverview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FPendingOrder.resx">
+      <DependentUpon>FPendingOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FSoldProducts.resx">
+      <DependentUpon>FSoldProducts.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FStockQuantity.resx">
+      <DependentUpon>FStockQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FRegister.resx">
+      <DependentUpon>FRegister.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMainMenu.resx">
+      <DependentUpon>FormMainMenu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddOrder.resx">
+      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormCustomers.resx">
+      <DependentUpon>FormCustomers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormDashboard.resx">
+      <DependentUpon>FormDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormEmployees.resx">
+      <DependentUpon>FormEmployees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormHomeDesktop.resx">
+      <DependentUpon>FormHomeDesktop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOrderDetail.resx">
+      <DependentUpon>FormOrderDetail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormOrders.resx">
+      <DependentUpon>FormOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormProduct.resx">
+      <DependentUpon>FormProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormStatistics.resx">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FResetPassword.resx">
+      <DependentUpon>FResetPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FVerify.resx">
+      <DependentUpon>FVerify.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductControl\ucProduct.resx">
+      <DependentUpon>ucProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductControl\UC_Lap.resx">
+      <DependentUpon>UC_Lap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductControl\UC_Orther.resx">
+      <DependentUpon>UC_Orther.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.manifest" />
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_ff00cc-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_ff00cc__1_-removebg-preview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\_ff00cc__1_-removebg-preview1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\locked.png" />
+    <None Include="Resources\locked.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\profile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_Clicked.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_23.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_22.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_21.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_19.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_15.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_14.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_13.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_12.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_11.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_10.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\debut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_user_6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\textbox_password.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1333691-200.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
