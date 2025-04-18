@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WFQuanLyCuaHang.Common;
 
 namespace WFQuanLyCuaHang.Forms
 {
@@ -105,6 +106,11 @@ namespace WFQuanLyCuaHang.Forms
             //update status
             if (isSuccess)
             {
+                bool createUserResult = dba.CreateDatabaseUser(ref err, username, password, SessionContext.CurrentUserType);
+                if (!createUserResult)
+                {
+                    MessageBox.Show("Tạo login SQL thất bại: " + err);
+                }
                 dba.UpdateAccountStatusToActive(username);
                 MessageBox.Show("Tạo tài khoản thành công!");
                 this.Dispose();
