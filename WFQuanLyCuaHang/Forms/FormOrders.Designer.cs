@@ -33,7 +33,6 @@
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
-            this.txtStatus = new System.Windows.Forms.TextBox();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -64,6 +63,7 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.tabControl_Main.SuspendLayout();
             this.tabOrder.SuspendLayout();
             this.pnlOrder.SuspendLayout();
@@ -89,18 +89,18 @@
             this.tabOrder.Controls.Add(this.dgvOrder);
             this.tabOrder.Controls.Add(this.panel6);
             this.tabOrder.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.tabOrder.Location = new System.Drawing.Point(4, 28);
+            this.tabOrder.Location = new System.Drawing.Point(4, 32);
             this.tabOrder.Name = "tabOrder";
             this.tabOrder.Padding = new System.Windows.Forms.Padding(3);
-            this.tabOrder.Size = new System.Drawing.Size(1429, 575);
+            this.tabOrder.Size = new System.Drawing.Size(1429, 571);
             this.tabOrder.TabIndex = 2;
             this.tabOrder.Text = "ORDER";
             // 
             // pnlOrder
             // 
+            this.pnlOrder.Controls.Add(this.cboStatus);
             this.pnlOrder.Controls.Add(this.txtDate);
             this.pnlOrder.Controls.Add(this.txtTotal);
-            this.pnlOrder.Controls.Add(this.txtStatus);
             this.pnlOrder.Controls.Add(this.txtCustomerID);
             this.pnlOrder.Controls.Add(this.txtEmployeeID);
             this.pnlOrder.Controls.Add(this.label12);
@@ -123,35 +123,28 @@
             // 
             this.txtDate.Location = new System.Drawing.Point(538, 19);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(152, 33);
+            this.txtDate.Size = new System.Drawing.Size(152, 39);
             this.txtDate.TabIndex = 18;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(1205, 90);
+            this.txtTotal.Location = new System.Drawing.Point(1205, 94);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(169, 33);
+            this.txtTotal.Size = new System.Drawing.Size(169, 39);
             this.txtTotal.TabIndex = 17;
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Location = new System.Drawing.Point(914, 94);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(154, 33);
-            this.txtStatus.TabIndex = 16;
             // 
             // txtCustomerID
             // 
             this.txtCustomerID.Location = new System.Drawing.Point(914, 20);
             this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(154, 33);
+            this.txtCustomerID.Size = new System.Drawing.Size(154, 39);
             this.txtCustomerID.TabIndex = 15;
             // 
             // txtEmployeeID
             // 
             this.txtEmployeeID.Location = new System.Drawing.Point(179, 94);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(116, 33);
+            this.txtEmployeeID.Size = new System.Drawing.Size(116, 39);
             this.txtEmployeeID.TabIndex = 14;
             // 
             // label12
@@ -161,7 +154,7 @@
             this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label12.Location = new System.Drawing.Point(10, 37);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(111, 19);
+            this.label12.Size = new System.Drawing.Size(133, 23);
             this.label12.TabIndex = 1;
             this.label12.Text = "Mã Đơn Hàng";
             // 
@@ -172,7 +165,7 @@
             this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label4.Location = new System.Drawing.Point(1084, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 19);
+            this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 13;
             this.label4.Text = "Địa Chỉ";
             // 
@@ -183,7 +176,7 @@
             this.label15.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label15.Location = new System.Drawing.Point(10, 106);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(113, 19);
+            this.label15.Size = new System.Drawing.Size(137, 23);
             this.label15.TabIndex = 4;
             this.label15.Text = "Mã Nhân Viên";
             // 
@@ -194,7 +187,7 @@
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label2.Location = new System.Drawing.Point(706, 105);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 19);
+            this.label2.Size = new System.Drawing.Size(154, 23);
             this.label2.TabIndex = 11;
             this.label2.Text = "Trạng Thái Đơn";
             // 
@@ -213,7 +206,7 @@
             this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label3.Location = new System.Drawing.Point(322, 107);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(136, 19);
+            this.label3.Size = new System.Drawing.Size(166, 23);
             this.label3.TabIndex = 12;
             this.label3.Text = "Phương Thức TT";
             // 
@@ -224,7 +217,7 @@
             this.label13.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label13.Location = new System.Drawing.Point(322, 32);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(117, 19);
+            this.label13.Size = new System.Drawing.Size(142, 23);
             this.label13.TabIndex = 2;
             this.label13.Text = "Ngày Đặt Hàng";
             // 
@@ -235,7 +228,7 @@
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label1.Location = new System.Drawing.Point(1084, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 19);
+            this.label1.Size = new System.Drawing.Size(101, 23);
             this.label1.TabIndex = 10;
             this.label1.Text = "Tổng Tiền";
             // 
@@ -244,14 +237,14 @@
             this.txtOrderID.Location = new System.Drawing.Point(179, 26);
             this.txtOrderID.Name = "txtOrderID";
             this.txtOrderID.ReadOnly = true;
-            this.txtOrderID.Size = new System.Drawing.Size(116, 33);
+            this.txtOrderID.Size = new System.Drawing.Size(116, 39);
             this.txtOrderID.TabIndex = 1;
             // 
             // txtPayMethod
             // 
             this.txtPayMethod.Location = new System.Drawing.Point(538, 93);
             this.txtPayMethod.Name = "txtPayMethod";
-            this.txtPayMethod.Size = new System.Drawing.Size(152, 33);
+            this.txtPayMethod.Size = new System.Drawing.Size(152, 39);
             this.txtPayMethod.TabIndex = 2;
             // 
             // label14
@@ -261,7 +254,7 @@
             this.label14.ForeColor = System.Drawing.Color.DarkSlateGray;
             this.label14.Location = new System.Drawing.Point(706, 33);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(127, 19);
+            this.label14.Size = new System.Drawing.Size(151, 23);
             this.label14.TabIndex = 3;
             this.label14.Text = "Mã Khách Hàng";
             // 
@@ -360,7 +353,7 @@
             this.panel6.Controls.Add(this.btnXoa);
             this.panel6.Controls.Add(this.btnThem);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(3, 473);
+            this.panel6.Location = new System.Drawing.Point(3, 469);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1423, 99);
             this.panel6.TabIndex = 1;
@@ -453,6 +446,15 @@
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // cboStatus
+            // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(914, 94);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(154, 40);
+            this.cboStatus.TabIndex = 19;
+            // 
             // FormOrders
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -497,7 +499,6 @@
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.TextBox txtDate;
         private System.Windows.Forms.TextBox txtTotal;
-        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.TextBox txtCustomerID;
         private System.Windows.Forms.Button btnShowDetail;
         private System.Windows.Forms.Button btnUpdateStatus;
@@ -510,5 +511,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.DataGridViewTextBoxColumn PaymentMethod;
         private System.Windows.Forms.DataGridViewTextBoxColumn ShippingAddress;
+        private System.Windows.Forms.ComboBox cboStatus;
     }
 }
