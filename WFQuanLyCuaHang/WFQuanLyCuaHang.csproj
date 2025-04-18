@@ -149,11 +149,11 @@
     <Compile Include="FormMainMenu.Designer.cs">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormAddOrder.cs">
+    <Compile Include="Forms\FormImportDetail.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormAddOrder.Designer.cs">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <Compile Include="Forms\FormImportDetail.Designer.cs">
+      <DependentUpon>FormImportDetail.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormCustomers.cs">
       <SubType>Form</SubType>
@@ -161,11 +161,11 @@
     <Compile Include="Forms\FormCustomers.Designer.cs">
       <DependentUpon>FormCustomers.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormDashboard.cs">
+    <Compile Include="Forms\FormImport.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormDashboard.Designer.cs">
-      <DependentUpon>FormDashboard.cs</DependentUpon>
+    <Compile Include="Forms\FormImport.Designer.cs">
+      <DependentUpon>FormImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FormEmployees.cs">
       <SubType>Form</SubType>
@@ -275,14 +275,14 @@
     <EmbeddedResource Include="FormMainMenu.resx">
       <DependentUpon>FormMainMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormAddOrder.resx">
-      <DependentUpon>FormAddOrder.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormImportDetail.resx">
+      <DependentUpon>FormImportDetail.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomers.resx">
       <DependentUpon>FormCustomers.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormDashboard.resx">
-      <DependentUpon>FormDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormImport.resx">
+      <DependentUpon>FormImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormEmployees.resx">
       <DependentUpon>FormEmployees.cs</DependentUpon>

@@ -152,10 +152,10 @@ namespace WFQuanLyCuaHang
         }
 
         // Menu Button_Clicks
-        private void btnDashboard_Click(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color1);
-            OpenChidlForm(new FormDashboard());
+            OpenChidlForm(new FormImport());
         }
 
         private void btnProducts_Click(object sender, EventArgs e)
