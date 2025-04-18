@@ -447,5 +447,125 @@ namespace WFQuanLyCuaHang.Forms
         {
 
         }
+
+        private void label5_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtSoluong_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtGiaSP_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenSP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label23_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaDonhang_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label22_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStatus_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaKhachhang_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label21_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenKhachhang_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label20_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaNhanvien_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void MTCustomerN_MaskInputRejected_1(object sender, MaskInputRejectedEventArgs e)
+        {
+
+        }
+
+        private void label19_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_autotongtien_CTDH_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtTenNV_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lb_them_CTDH_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label6_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label10_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtMaSP_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

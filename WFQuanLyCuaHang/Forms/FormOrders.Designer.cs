@@ -133,6 +133,13 @@
             this.txtTotal.Size = new System.Drawing.Size(169, 39);
             this.txtTotal.TabIndex = 17;
             // 
+            // txtStatus
+            // 
+            this.txtStatus.Location = new System.Drawing.Point(914, 94);
+            this.txtStatus.Name = "txtStatus";
+            this.txtStatus.Size = new System.Drawing.Size(154, 39);
+            this.txtStatus.TabIndex = 16;
+            // 
             // txtCustomerID
             // 
             this.txtCustomerID.Location = new System.Drawing.Point(914, 20);

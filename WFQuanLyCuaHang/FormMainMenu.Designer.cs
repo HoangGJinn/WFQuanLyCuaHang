@@ -38,7 +38,7 @@
             this.btnCustomers = new FontAwesome.Sharp.IconButton();
             this.btnOrders = new FontAwesome.Sharp.IconButton();
             this.btnProducts = new FontAwesome.Sharp.IconButton();
-            this.btnDashboard = new FontAwesome.Sharp.IconButton();
+            this.btnImport = new FontAwesome.Sharp.IconButton();
             this.pnlLogo = new System.Windows.Forms.Panel();
             this.btnHome = new System.Windows.Forms.PictureBox();
             this.lblDatetime = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.pnlMenu.Controls.Add(this.btnCustomers);
             this.pnlMenu.Controls.Add(this.btnOrders);
             this.pnlMenu.Controls.Add(this.btnProducts);
-            this.pnlMenu.Controls.Add(this.btnDashboard);
+            this.pnlMenu.Controls.Add(this.btnImport);
             this.pnlMenu.Controls.Add(this.pnlLogo);
             this.pnlMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlMenu.Location = new System.Drawing.Point(0, 0);
@@ -261,27 +261,27 @@
             this.btnProducts.UseVisualStyleBackColor = true;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click);
             // 
-            // btnDashboard
+            // btnImport
             // 
-            this.btnDashboard.FlatAppearance.BorderSize = 0;
-            this.btnDashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDashboard.Font = new System.Drawing.Font("Century Gothic", 10.5F);
-            this.btnDashboard.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnDashboard.IconChar = FontAwesome.Sharp.IconChar.ChartBar;
-            this.btnDashboard.IconColor = System.Drawing.Color.Gainsboro;
-            this.btnDashboard.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnDashboard.IconSize = 32;
-            this.btnDashboard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashboard.Location = new System.Drawing.Point(0, 202);
-            this.btnDashboard.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.btnDashboard.Name = "btnDashboard";
-            this.btnDashboard.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
-            this.btnDashboard.Size = new System.Drawing.Size(198, 59);
-            this.btnDashboard.TabIndex = 1;
-            this.btnDashboard.Text = "Dashboard";
-            this.btnDashboard.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnDashboard.UseVisualStyleBackColor = true;
-            this.btnDashboard.Click += new System.EventHandler(this.btnDashboard_Click);
+            this.btnImport.FlatAppearance.BorderSize = 0;
+            this.btnImport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnImport.Font = new System.Drawing.Font("Century Gothic", 10.5F);
+            this.btnImport.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnImport.IconChar = FontAwesome.Sharp.IconChar.Dolly;
+            this.btnImport.IconColor = System.Drawing.Color.Gainsboro;
+            this.btnImport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnImport.IconSize = 32;
+            this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnImport.Location = new System.Drawing.Point(0, 202);
+            this.btnImport.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
+            this.btnImport.Size = new System.Drawing.Size(198, 59);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.Text = "Import";
+            this.btnImport.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // pnlLogo
             // 
@@ -406,7 +406,7 @@
             this.lblTitleChildForm.Location = new System.Drawing.Point(47, 24);
             this.lblTitleChildForm.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTitleChildForm.Name = "lblTitleChildForm";
-            this.lblTitleChildForm.Size = new System.Drawing.Size(73, 24);
+            this.lblTitleChildForm.Size = new System.Drawing.Size(63, 21);
             this.lblTitleChildForm.TabIndex = 1;
             this.lblTitleChildForm.Text = "Home";
             // 
@@ -482,7 +482,7 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlMenu;
-        private FontAwesome.Sharp.IconButton btnDashboard;
+        private FontAwesome.Sharp.IconButton btnImport;
         private FontAwesome.Sharp.IconButton btnStatistics;
         private FontAwesome.Sharp.IconButton btnEmployees;
         private FontAwesome.Sharp.IconButton btnCustomers;
