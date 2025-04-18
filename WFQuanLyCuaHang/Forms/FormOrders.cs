@@ -25,6 +25,9 @@ namespace WFQuanLyCuaHang.Forms
         {
             InitializeComponent();
             dbo = new DBOrder();
+            // Ví dụ này dùng danh sách tĩnh
+            var statuses = new List<string> { "Chờ xử lý", "Đang giao", "Đã giao", "Đã hủy" };
+            cboStatus.DataSource = statuses;
         }
 
         void LoadData()
@@ -41,7 +44,8 @@ namespace WFQuanLyCuaHang.Forms
                 this.txtOrderID.ResetText();
                 this.txtCustomerID.ResetText();
                 this.txtEmployeeID.ResetText();
-                this.txtStatus.ResetText();
+                cboStatus.Enabled = false;
+                cboStatus.SelectedIndex = -1;
                 this.txtAddr.ResetText();
                 this.txtTotal.ResetText();
                 this.txtDate.ResetText();
@@ -83,18 +87,24 @@ namespace WFQuanLyCuaHang.Forms
             txtOrderID.Text = dgvOrder.Rows[r].Cells[0].Value?.ToString() ?? "";
             txtCustomerID.Text = dgvOrder.Rows[r].Cells[1].Value?.ToString() ?? "";
             txtEmployeeID.Text = dgvOrder.Rows[r].Cells[2].Value?.ToString() ?? "";
-            // Kiểm tra và chuyển đổi NamSinh
+            // Kiểm tra và chuyển đổi Ngay Dat Hang
             var dateValue = dgvOrder.Rows[r].Cells[3].Value;
-            if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime namSinh))
+            if (dateValue != null && DateTime.TryParse(dateValue.ToString(), out DateTime ngayDatHang))
             {
-                txtDate.Text = namSinh.ToString("dd/MM/yyyy");
+                txtDate.Text = ngayDatHang.ToString("dd/MM/yyyy");
             }
             else
             {
                 txtDate.Text = ""; // Nếu NULL hoặc không hợp lệ
             }
             txtTotal.Text = dgvOrder.Rows[r].Cells[4].Value?.ToString() ?? "";
-            txtStatus.Text = dgvOrder.Rows[r].Cells[5].Value?.ToString() ?? "";
+
+            var statusValue = dgvOrder.Rows[r].Cells[5].Value?.ToString() ?? "";
+            if (!string.IsNullOrEmpty(statusValue))
+                cboStatus.SelectedItem = statusValue;
+            else
+                cboStatus.SelectedIndex = -1;
+
             txtPayMethod.Text = dgvOrder.Rows[r].Cells[6].Value?.ToString() ?? "";
             txtAddr.Text = dgvOrder.Rows[r].Cells[7].Value?.ToString() ?? "";
         }
@@ -164,8 +174,10 @@ namespace WFQuanLyCuaHang.Forms
             this.txtEmployeeID.ResetText();
             this.txtDate.ResetText();
             this.txtTotal.ResetText();
-            this.txtStatus.ResetText();
             this.txtAddr.ResetText();
+
+            cboStatus.SelectedIndex = -1;
+            cboStatus.Enabled = true;
 
             // Cho thao tác trên các nút Lưu / Hủy / Panel
             this.pnlOrder.Enabled = true;
@@ -199,8 +211,8 @@ namespace WFQuanLyCuaHang.Forms
             this.txtOrderID.Enabled = false;
             this.txtPayMethod.Enabled = false;
             this.txtTotal.Enabled = false;
-            // Đưa con trỏ đến TextFiled txtStatus
-            this.txtStatus.Focus();
+            // Chỉ cho thao tác trên combo trạng thái
+            cboStatus.Enabled = true;
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -209,7 +221,8 @@ namespace WFQuanLyCuaHang.Forms
             this.txtOrderID.ResetText();
             this.txtCustomerID.ResetText();
             this.txtEmployeeID.ResetText();
-            this.txtStatus.ResetText();
+            cboStatus.SelectedIndex = -1;
+            cboStatus.Enabled = false;
             this.txtAddr.ResetText();
             this.txtTotal.ResetText();
             this.txtDate.ResetText();
@@ -235,26 +248,25 @@ namespace WFQuanLyCuaHang.Forms
             int orderID = int.Parse(txtOrderID.Text);
             int customerID = int.Parse(txtCustomerID.Text);
             int employeeID = int.Parse(txtEmployeeID.Text);
-            DateTime orderDate = DateTime.Parse(txtDate.Text);
             decimal totalAmount = decimal.Parse(txtTotal.Text);
-            string status = txtStatus.Text;
+            string status = cboStatus.SelectedItem.ToString();
             string paymentMethod = txtPayMethod.Text;
             string shippingAddress = txtAddr.Text;
 
             if (!Them) // Nếu đang Sửa trạng thái
             {
                 // Kiểm tra xem có ô nào bị bỏ trống không
-                if (string.IsNullOrWhiteSpace(txtStatus.Text))
+                if (cboStatus.SelectedIndex < 0)
                 {
-                    MessageBox.Show("Đừng để trống bạn eyyyy", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return; // Dừng thực hiện nếu có ô trống
+                    MessageBox.Show("Bạn phải chọn trạng thái!", "Thông báo",
+                        MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
                 }
                 try
                 {
                     // Lệnh Insert Into
-                    bool f = dbo.UpdateOrderStatus(ref err,
-                    orderID,
-                    this.txtStatus.Text.ToString());
+                    string newStatus = cboStatus.SelectedItem.ToString();
+                    bool f = dbo.UpdateOrderStatus(ref err, orderID, newStatus);
                     if (f)
                     {
                         // Load lại dữ liệu trên DataGridVew
@@ -274,13 +286,14 @@ namespace WFQuanLyCuaHang.Forms
             }
             else
             {
+                DateTime orderDate = DateTime.Parse(txtDate.Text);
                 // Kiểm tra xem có ô nào bị bỏ trống không
                 if (
                     string.IsNullOrWhiteSpace(txtCustomerID.Text) ||
                     string.IsNullOrWhiteSpace(txtEmployeeID.Text) ||
                     string.IsNullOrWhiteSpace(txtDate.Text)       ||
                     string.IsNullOrWhiteSpace(txtTotal.Text)      ||
-                    string.IsNullOrWhiteSpace(txtStatus.Text)     ||
+                    cboStatus.SelectedIndex < 0 ||
                     string.IsNullOrWhiteSpace(txtPayMethod.Text) ||
                     string.IsNullOrWhiteSpace(txtAddr.Text))
                 {
