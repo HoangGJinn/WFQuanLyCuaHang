@@ -14,7 +14,7 @@ using WFQuanLyCuaHang.ProductControl; //use UcProduct
 
 namespace WFQuanLyCuaHang.Forms
 {
-    public partial class FormHomeDesktop: Form
+    public partial class FormAddImport1 : Form
     {
         public string username;
         public string usertype;
@@ -22,16 +22,16 @@ namespace WFQuanLyCuaHang.Forms
         //List cart
         List<CartItem> cart = new List<CartItem>();
 
-        
 
-        public FormHomeDesktop(string username, string usertype)
+
+        public FormAddImport1(string username, string usertype)
         {
             InitializeComponent();
             dbp = new DBProduct();
             this.username = username;
             this.usertype = usertype;
             txtProductName.Text = "Hãy chọn sản phẩm!";
-            if(usertype == "Customer")
+            if (usertype == "Customer")
             {
                 btnCreateOrder.Visible = false;
                 dgvCart.Visible = false;
@@ -39,7 +39,7 @@ namespace WFQuanLyCuaHang.Forms
 
         }
 
-        private void FormHomeDesktop_Load(object sender, EventArgs e)
+        private void FormAddImport1_Load(object sender, EventArgs e)
         {
             LoadLaptopintoLayout();
             iconButton1.Enabled = false;
@@ -93,7 +93,7 @@ namespace WFQuanLyCuaHang.Forms
                 ucProduct.OnRemoveFromCart += RemoveFromCart;
 
                 // Đăng ký sự kiện cập nhật giỏ hàng khi số lượng thay đổi
-                ucProduct.OnUpdateCart += UpdateCart; 
+                ucProduct.OnUpdateCart += UpdateCart;
 
                 // Load thông tin sản phẩm
                 ucProduct.LoadProduct(ProductID);
@@ -140,7 +140,7 @@ namespace WFQuanLyCuaHang.Forms
         private void iconButton2_Click(object sender, EventArgs e)
         {
             iconButton1.Enabled = true;
-        
+
             iconButton2.Enabled = false;
 
             LoadOrtherintoLayout();
@@ -299,6 +299,11 @@ namespace WFQuanLyCuaHang.Forms
         private void timerClock_Tick(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }

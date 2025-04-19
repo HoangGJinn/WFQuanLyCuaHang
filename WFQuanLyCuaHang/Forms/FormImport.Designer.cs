@@ -30,7 +30,6 @@
         {
             this.pnlOrder = new System.Windows.Forms.Panel();
             this.txtSupplierID = new System.Windows.Forms.TextBox();
-            this.txtStatus = new System.Windows.Forms.TextBox();
             this.txtImportDate = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -56,6 +55,7 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImport)).BeginInit();
             this.panel6.SuspendLayout();
@@ -63,8 +63,8 @@
             // 
             // pnlOrder
             // 
+            this.pnlOrder.Controls.Add(this.cboStatus);
             this.pnlOrder.Controls.Add(this.txtSupplierID);
-            this.pnlOrder.Controls.Add(this.txtStatus);
             this.pnlOrder.Controls.Add(this.txtImportDate);
             this.pnlOrder.Controls.Add(this.txtEmployeeID);
             this.pnlOrder.Controls.Add(this.label12);
@@ -87,14 +87,6 @@
             this.txtSupplierID.Name = "txtSupplierID";
             this.txtSupplierID.Size = new System.Drawing.Size(190, 39);
             this.txtSupplierID.TabIndex = 18;
-            // 
-            // txtStatus
-            // 
-            this.txtStatus.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtStatus.Location = new System.Drawing.Point(1090, 97);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(190, 39);
-            this.txtStatus.TabIndex = 16;
             // 
             // txtImportDate
             // 
@@ -367,6 +359,15 @@
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
+            // cboStatus
+            // 
+            this.cboStatus.Font = new System.Drawing.Font("Cambria", 16.2F);
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(1090, 96);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(190, 40);
+            this.cboStatus.TabIndex = 19;
+            // 
             // FormImport
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -391,7 +392,6 @@
 
         private System.Windows.Forms.Panel pnlOrder;
         private System.Windows.Forms.TextBox txtSupplierID;
-        private System.Windows.Forms.TextBox txtStatus;
         private System.Windows.Forms.TextBox txtImportDate;
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.Label label12;
@@ -417,5 +417,6 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.ComboBox cboStatus;
     }
 }

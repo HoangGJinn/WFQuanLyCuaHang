@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using BusinessLogicLayer;
 using System.Windows.Controls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WFQuanLyCuaHang.Forms
 {
@@ -24,7 +25,13 @@ namespace WFQuanLyCuaHang.Forms
         {
             InitializeComponent();
             dbi = new DBImport();
+            // Ví dụ này dùng danh sách tĩnh
+            var statuses = new List<string> { "Chờ xử lý", "Hoàn thành", "Đã hủy" };
+            cboStatus.DataSource = statuses;
+
         }
+        public string username { get; private set; }
+        public string usertype { get; private set; }
         void LoadData()
         {
             try
@@ -41,7 +48,9 @@ namespace WFQuanLyCuaHang.Forms
                 this.txtEmployeeID.ResetText();
                 this.txtImportDate.ResetText();
                 this.txtTotalCost.ResetText();
-                this.txtStatus.ResetText();
+
+                cboStatus.Enabled = false;
+                cboStatus.SelectedIndex = -1;
 
                 //Không cho thao tác trên nút UpdateStatus / Panel / Xoa / ShowDetail / SaveStatus
                 this.pnlOrder.Enabled = false;
@@ -82,7 +91,12 @@ namespace WFQuanLyCuaHang.Forms
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-
+            this.username = username;
+            this.usertype = usertype;
+            FormAddImport1 formAddImport1 = new FormAddImport1(username, usertype);
+            formAddImport1.StartPosition = FormStartPosition.CenterParent;
+            formAddImport1.BringToFront();
+            formAddImport1.Show();
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -151,18 +165,17 @@ namespace WFQuanLyCuaHang.Forms
             this.txtTotalCost.Enabled = false;
 
             // Focus vào txtStatus để cập nhật
-            this.txtStatus.Enabled = true;
-            this.txtStatus.Focus();
-
+            cboStatus.Enabled = true;
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
             // Kiểm tra nếu đang ở chế độ cập nhật trạng thái (không phải thêm)
+            string Status = cboStatus.SelectedItem.ToString();
             if (!Them)
             {
                 // Kiểm tra xem ô trạng thái có bị bỏ trống không
-                if (string.IsNullOrWhiteSpace(txtStatus.Text))
+                if (cboStatus.SelectedIndex < 0)
                 {
                     MessageBox.Show("Vui lòng nhập trạng thái mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
@@ -172,7 +185,7 @@ namespace WFQuanLyCuaHang.Forms
                 {
                     string err = "";
                     int importID = int.Parse(txtImportID.Text);
-                    string status = txtStatus.Text;
+                    string status = Status;
 
                     bool f = dbi.UpdateImportStatus(ref err, importID, status);
                     if (f)
@@ -199,7 +212,8 @@ namespace WFQuanLyCuaHang.Forms
             this.txtImportID.ResetText();
             this.txtSupplierID.ResetText();
             this.txtEmployeeID.ResetText();
-            this.txtStatus.ResetText();
+            cboStatus.SelectedIndex = -1;
+            cboStatus.Enabled = false;
             this.txtTotalCost.ResetText();
             this.txtImportDate.ResetText();
 
@@ -221,10 +235,12 @@ namespace WFQuanLyCuaHang.Forms
 
         private void dgvImport_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            this.btnUpdateStatus.Enabled = false;
+            if (cboStatus.Text == "Chờ xử lý")
+                this.btnUpdateStatus.Enabled = true;
             // Cho phép các nút thao tác
             this.btnShowDetail.Enabled = true;
             this.btnXoa.Enabled = true;
-            this.btnUpdateStatus.Enabled = true;
             this.btnThem.Enabled = false;
 
             // Lấy chỉ số dòng đang chọn
@@ -246,7 +262,11 @@ namespace WFQuanLyCuaHang.Forms
             }
 
             txtTotalCost.Text = dgvImport.Rows[r].Cells["TotalCost"].Value?.ToString() ?? "";
-            txtStatus.Text = dgvImport.Rows[r].Cells["Status"].Value?.ToString() ?? "";
+            var statusValue = dgvImport.Rows[r].Cells["Status"].Value?.ToString() ?? "";
+            if (!string.IsNullOrEmpty(statusValue))
+                cboStatus.SelectedItem = statusValue;
+            else
+                cboStatus.SelectedIndex = -1;
         }
 
         private void FormImport_Load(object sender, EventArgs e)

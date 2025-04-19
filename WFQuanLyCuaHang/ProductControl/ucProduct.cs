@@ -24,6 +24,7 @@ namespace WFQuanLyCuaHang.ProductControl
         private int ProductID;
         public string ProductName { get; private set; }
         private decimal Price;
+        private FormAddImport1 formAddImport1;
 
         // Delegate cho sự kiện thêm vào giỏ hàng
         public delegate void AddToCartHandler(int productId, string productName, decimal price);
@@ -42,6 +43,21 @@ namespace WFQuanLyCuaHang.ProductControl
             dbp = new DBProduct();
             this.frmHome = frmHome;
             if(frmHome.usertype == "Customer")
+            {
+                btnOrder.Visible = false;
+            }
+            else
+            {
+                btnOrder.Visible = true;
+            }
+        }
+
+        public ucProduct(FormAddImport1 formAddImport1)
+        {
+            InitializeComponent();
+            dbp = new DBProduct();
+            this.formAddImport1 = formAddImport1;
+            if (formAddImport1.usertype == "Customer")
             {
                 btnOrder.Visible = false;
             }

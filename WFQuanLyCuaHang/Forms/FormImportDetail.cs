@@ -74,8 +74,6 @@ namespace WFQuanLyCuaHang.Forms
             }
         }
 
-
-
         private void FormImportDetail_Load(object sender, EventArgs e)
         {
             LoadData();
