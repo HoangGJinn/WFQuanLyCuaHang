@@ -50,5 +50,18 @@ namespace BusinessLogicLayer
             return db.MyExecuteNonQuery("spDeleteWarranty", CommandType.StoredProcedure, ref err,
                 new SqlParameter("@WarrantyID", WarrantyID));
         }
+
+        // gia hạn
+        public bool ExtendWarranty(ref string err, int warrantyID, DateTime newEndDate)
+        {
+            return db.MyExecuteNonQuery("spExtendWarranty", CommandType.StoredProcedure, ref err,
+                new SqlParameter("WarrantyID", warrantyID),
+                new SqlParameter("@NewEndDate", newEndDate));
+        }
+        // Lấy sản phẩm đã hết hạn bảo hành
+        public DataSet GetExpiredWarranties()
+        {
+            return db.ExecuteQueryDataSet("SELECT * FROM view_ExpiredWarranties", CommandType.Text, null);
+        }
     }
 }

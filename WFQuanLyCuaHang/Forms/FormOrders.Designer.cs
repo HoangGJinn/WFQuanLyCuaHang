@@ -135,10 +135,10 @@
             // 
             // txtStatus
             // 
-            this.txtStatus.Location = new System.Drawing.Point(914, 94);
-            this.txtStatus.Name = "txtStatus";
-            this.txtStatus.Size = new System.Drawing.Size(154, 39);
-            this.txtStatus.TabIndex = 16;
+            //this.txtStatus.Location = new System.Drawing.Point(914, 94);
+            //this.txtStatus.Name = "txtStatus";
+            //this.txtStatus.Size = new System.Drawing.Size(154, 39);
+            //this.txtStatus.TabIndex = 16;
             // 
             // txtCustomerID
             // 

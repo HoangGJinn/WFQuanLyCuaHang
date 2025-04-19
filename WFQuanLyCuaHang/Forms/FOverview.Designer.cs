@@ -28,46 +28,71 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.iconButton2 = new FontAwesome.Sharp.IconButton();
+            this.btnUnavailableWarranty = new FontAwesome.Sharp.IconButton();
+            this.btnStockQuantity = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnPendingOrder = new FontAwesome.Sharp.IconButton();
             this.btnSoldProducts = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
-            // iconButton2
+            // btnUnavailableWarranty
             // 
-            this.iconButton2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.iconButton2.FlatAppearance.BorderSize = 0;
-            this.iconButton2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.iconButton2.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.iconButton2.ForeColor = System.Drawing.Color.Black;
-            this.iconButton2.IconChar = FontAwesome.Sharp.IconChar.Check;
-            this.iconButton2.IconColor = System.Drawing.Color.White;
-            this.iconButton2.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton2.IconSize = 32;
-            this.iconButton2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.iconButton2.Location = new System.Drawing.Point(0, 114);
-            this.iconButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.iconButton2.Name = "iconButton2";
-            this.iconButton2.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.iconButton2.Size = new System.Drawing.Size(1437, 57);
-            this.iconButton2.TabIndex = 21;
-            this.iconButton2.Text = "Quantity";
-            this.iconButton2.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.iconButton2.UseVisualStyleBackColor = true;
+            this.btnUnavailableWarranty.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnUnavailableWarranty.FlatAppearance.BorderSize = 0;
+            this.btnUnavailableWarranty.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUnavailableWarranty.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUnavailableWarranty.ForeColor = System.Drawing.Color.Black;
+            this.btnUnavailableWarranty.IconChar = FontAwesome.Sharp.IconChar.CircleExclamation;
+            this.btnUnavailableWarranty.IconColor = System.Drawing.Color.White;
+            this.btnUnavailableWarranty.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnUnavailableWarranty.IconSize = 32;
+            this.btnUnavailableWarranty.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnUnavailableWarranty.Location = new System.Drawing.Point(0, 171);
+            this.btnUnavailableWarranty.Margin = new System.Windows.Forms.Padding(2);
+            this.btnUnavailableWarranty.Name = "btnUnavailableWarranty";
+            this.btnUnavailableWarranty.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnUnavailableWarranty.Size = new System.Drawing.Size(1437, 57);
+            this.btnUnavailableWarranty.TabIndex = 27;
+            this.btnUnavailableWarranty.Text = "Các sản phẩm hết hạn bảo hành";
+            this.btnUnavailableWarranty.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnUnavailableWarranty.UseVisualStyleBackColor = true;
+            this.btnUnavailableWarranty.Click += new System.EventHandler(this.btnUnavailableWarranty_Click);
+            // 
+            // btnStockQuantity
+            // 
+            this.btnStockQuantity.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStockQuantity.FlatAppearance.BorderSize = 0;
+            this.btnStockQuantity.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStockQuantity.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStockQuantity.ForeColor = System.Drawing.Color.Black;
+            this.btnStockQuantity.IconChar = FontAwesome.Sharp.IconChar.ClipboardList;
+            this.btnStockQuantity.IconColor = System.Drawing.Color.White;
+            this.btnStockQuantity.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnStockQuantity.IconSize = 32;
+            this.btnStockQuantity.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStockQuantity.Location = new System.Drawing.Point(0, 114);
+            this.btnStockQuantity.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStockQuantity.Name = "btnStockQuantity";
+            this.btnStockQuantity.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnStockQuantity.Size = new System.Drawing.Size(1437, 57);
+            this.btnStockQuantity.TabIndex = 26;
+            this.btnStockQuantity.Text = "Số lượng sản phẩm tồn kho";
+            this.btnStockQuantity.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStockQuantity.UseVisualStyleBackColor = true;
+            this.btnStockQuantity.Click += new System.EventHandler(this.iconButton2_Click_1);
             // 
             // iconButton1
             // 
-            this.iconButton1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
+            this.iconButton1.BackColor = System.Drawing.Color.Wheat;
             this.iconButton1.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.iconButton1.IconChar = FontAwesome.Sharp.IconChar.None;
             this.iconButton1.IconColor = System.Drawing.Color.LightCyan;
             this.iconButton1.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.iconButton1.Location = new System.Drawing.Point(659, 527);
+            this.iconButton1.Location = new System.Drawing.Point(659, 538);
             this.iconButton1.Margin = new System.Windows.Forms.Padding(2);
             this.iconButton1.Name = "iconButton1";
             this.iconButton1.Size = new System.Drawing.Size(134, 58);
-            this.iconButton1.TabIndex = 20;
+            this.iconButton1.TabIndex = 25;
             this.iconButton1.Text = "Back";
             this.iconButton1.UseVisualStyleBackColor = false;
             // 
@@ -88,10 +113,11 @@
             this.btnPendingOrder.Name = "btnPendingOrder";
             this.btnPendingOrder.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.btnPendingOrder.Size = new System.Drawing.Size(1437, 57);
-            this.btnPendingOrder.TabIndex = 19;
-            this.btnPendingOrder.Text = "PendingOrder";
+            this.btnPendingOrder.TabIndex = 24;
+            this.btnPendingOrder.Text = "Các đơn hàng đang được xử lý";
             this.btnPendingOrder.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPendingOrder.UseVisualStyleBackColor = true;
+            this.btnPendingOrder.Click += new System.EventHandler(this.btnPendingOrder_Click_1);
             // 
             // btnSoldProducts
             // 
@@ -110,8 +136,8 @@
             this.btnSoldProducts.Name = "btnSoldProducts";
             this.btnSoldProducts.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.btnSoldProducts.Size = new System.Drawing.Size(1437, 57);
-            this.btnSoldProducts.TabIndex = 18;
-            this.btnSoldProducts.Text = "SoldProduct";
+            this.btnSoldProducts.TabIndex = 23;
+            this.btnSoldProducts.Text = "Các sản phẩm cửa hàng bán ra được trong hôm nay";
             this.btnSoldProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSoldProducts.UseVisualStyleBackColor = true;
             this.btnSoldProducts.Click += new System.EventHandler(this.btnSoldProducts_Click);
@@ -121,7 +147,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(1437, 607);
-            this.Controls.Add(this.iconButton2);
+            this.Controls.Add(this.btnUnavailableWarranty);
+            this.Controls.Add(this.btnStockQuantity);
             this.Controls.Add(this.iconButton1);
             this.Controls.Add(this.btnPendingOrder);
             this.Controls.Add(this.btnSoldProducts);
@@ -134,7 +161,8 @@
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton iconButton2;
+        private FontAwesome.Sharp.IconButton btnUnavailableWarranty;
+        private FontAwesome.Sharp.IconButton btnStockQuantity;
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnPendingOrder;
         private FontAwesome.Sharp.IconButton btnSoldProducts;
