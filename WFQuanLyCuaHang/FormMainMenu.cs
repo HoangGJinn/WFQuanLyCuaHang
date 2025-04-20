@@ -277,11 +277,6 @@ namespace WFQuanLyCuaHang
 
         }
 
-        private void iconButton1_Click(object sender, EventArgs e)
-        {
-            OpenChidlForm(new FOverview());
-            ActivateButton(sender, RGBColors.color1);
-        }
         private void timerTime_Tick(object sender, EventArgs e)
         {
             lblDatetime.Text = DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy");
@@ -291,6 +286,12 @@ namespace WFQuanLyCuaHang
         {
             ActivateButton(sender, RGBColors.color4);
             OpenChidlForm(new FormWarranty());
+        }
+
+        private void btnOverview_Click(object sender, EventArgs e)
+        {
+            OpenChidlForm(new FOverview());
+            ActivateButton(sender, RGBColors.color1);
         }
     }
 }

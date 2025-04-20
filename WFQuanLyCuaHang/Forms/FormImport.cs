@@ -181,6 +181,7 @@ namespace WFQuanLyCuaHang.Forms
                 {
                     string err = "";
                     int importID = int.Parse(txtImportID.Text);
+                    string status = Status;
 
                     bool f = dbi.UpdateImportStatus(ref err, importID, status);
                     if (f)
