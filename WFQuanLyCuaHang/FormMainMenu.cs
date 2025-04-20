@@ -184,13 +184,6 @@ namespace WFQuanLyCuaHang
 
         }
 
-        private void btnStatistics_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color6);
-            OpenChidlForm(new FormStatistics());
-
-        }
-
         // Drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

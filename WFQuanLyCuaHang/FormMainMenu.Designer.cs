@@ -171,7 +171,6 @@
             this.btnStatistics.Text = "Statistics";
             this.btnStatistics.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnStatistics.UseVisualStyleBackColor = true;
-            this.btnStatistics.Click += new System.EventHandler(this.btnStatistics_Click);
             // 
             // btnEmployees
             // 

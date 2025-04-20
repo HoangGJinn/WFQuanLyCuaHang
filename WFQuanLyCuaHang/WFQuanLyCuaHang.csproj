@@ -197,12 +197,6 @@
     <Compile Include="Forms\FormProduct.Designer.cs">
       <DependentUpon>FormProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormStatistics.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\FormStatistics.Designer.cs">
-      <DependentUpon>FormStatistics.cs</DependentUpon>
-    </Compile>
     <Compile Include="FResetPassword.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -298,9 +292,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormProduct.resx">
       <DependentUpon>FormProduct.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormStatistics.resx">
-      <DependentUpon>FormStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FResetPassword.resx">
       <DependentUpon>FResetPassword.cs</DependentUpon>
