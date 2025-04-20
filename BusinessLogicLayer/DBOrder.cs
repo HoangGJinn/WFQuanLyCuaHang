@@ -69,7 +69,8 @@ namespace BusinessLogicLayer
         // Lấy đơn hàng chưa giao (View)
         public DataSet GetPendingOrders()
         {
-            return db.ExecuteQueryDataSet("spGetPendingOrders", CommandType.StoredProcedure, null);
+            string query = "SELECT * FROM View_PendingOrders";
+            return db.ExecuteQueryDataSet(query, CommandType.Text, null);
         }
 
         // Lấy thông tin nhân viên xử lý đơn hàng

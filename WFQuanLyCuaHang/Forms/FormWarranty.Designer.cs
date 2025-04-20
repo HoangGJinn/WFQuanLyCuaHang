@@ -209,6 +209,7 @@
             this.txtStartDate.SelectedText = "";
             this.txtStartDate.Size = new System.Drawing.Size(172, 37);
             this.txtStartDate.TabIndex = 9;
+            this.txtStartDate.TextChanged += new System.EventHandler(this.txtStartDate_TextChanged_1);
             // 
             // lbProductID
             // 
@@ -272,56 +273,65 @@
             this.EndDate,
             this.Status,
             this.WarrantyCenter});
+            this.dgvWarranty.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.dgvWarranty.Location = new System.Drawing.Point(2, 205);
             this.dgvWarranty.Margin = new System.Windows.Forms.Padding(2);
             this.dgvWarranty.Name = "dgvWarranty";
+            this.dgvWarranty.ReadOnly = true;
             this.dgvWarranty.RowHeadersWidth = 51;
             this.dgvWarranty.RowTemplate.Height = 24;
             this.dgvWarranty.Size = new System.Drawing.Size(1443, 277);
             this.dgvWarranty.TabIndex = 30;
-            this.dgvWarranty.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarranty_CellContentClick);
+            this.dgvWarranty.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvWarranty_CellClick);
             // 
             // WarrantyID
             // 
             this.WarrantyID.HeaderText = "WarrantyID";
             this.WarrantyID.MinimumWidth = 6;
             this.WarrantyID.Name = "WarrantyID";
+            this.WarrantyID.ReadOnly = true;
             // 
             // ProductID
             // 
             this.ProductID.HeaderText = "ProductID";
             this.ProductID.MinimumWidth = 6;
             this.ProductID.Name = "ProductID";
+            this.ProductID.ReadOnly = true;
             // 
             // CustomerID
             // 
             this.CustomerID.HeaderText = "CustomerID";
             this.CustomerID.MinimumWidth = 6;
             this.CustomerID.Name = "CustomerID";
+            this.CustomerID.ReadOnly = true;
             // 
             // StartDate
             // 
             this.StartDate.HeaderText = "StartDate";
             this.StartDate.MinimumWidth = 6;
             this.StartDate.Name = "StartDate";
+            this.StartDate.ReadOnly = true;
             // 
             // EndDate
             // 
             this.EndDate.HeaderText = "EndDate";
             this.EndDate.MinimumWidth = 6;
             this.EndDate.Name = "EndDate";
+            this.EndDate.ReadOnly = true;
             // 
             // Status
             // 
             this.Status.HeaderText = "Status";
             this.Status.MinimumWidth = 6;
             this.Status.Name = "Status";
+            this.Status.ReadOnly = true;
             // 
             // WarrantyCenter
             // 
             this.WarrantyCenter.HeaderText = "WarrantyCenter";
             this.WarrantyCenter.MinimumWidth = 6;
             this.WarrantyCenter.Name = "WarrantyCenter";
+            this.WarrantyCenter.ReadOnly = true;
             // 
             // tableLayoutPanel1
             // 

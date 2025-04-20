@@ -24,7 +24,6 @@ namespace WFQuanLyCuaHang.Forms
             InitializeComponent();
             db = DALManager.Instance;
 
-
         }
         void LoadData()
         {
@@ -58,8 +57,15 @@ namespace WFQuanLyCuaHang.Forms
                 cbExtended.SelectedIndex = 0;
 
                 // Gán lại sự kiện CellClick (tránh gán trùng)
-                dgvWarranty.CellClick -= dgvWarranty_CellContentClick;
-                dgvWarranty.CellClick += dgvWarranty_CellContentClick;
+                dgvWarranty.CellClick -= dgvWarranty_CellClick;  // Loại bỏ sự kiện cũ
+                dgvWarranty.CellClick += new DataGridViewCellEventHandler(dgvWarranty_CellClick);  // Gán lại sự kiện mới
+
+                // Tự động gọi CellClick cho dòng đầu tiên nếu có dữ liệu
+                if (dtWarranty.Rows.Count > 0)
+                {
+                    dgvWarranty.Rows[0].Selected = true;  // Chọn dòng đầu tiên
+                    dgvWarranty_CellClick(this, new DataGridViewCellEventArgs(0, 0));  // Giả lập sự kiện click vào dòng đầu tiên
+                }
             }
             catch (Exception ex)
             {
@@ -67,7 +73,8 @@ namespace WFQuanLyCuaHang.Forms
             }
         }
 
-        private void dgvWarranty_CellContentClick(object sender, DataGridViewCellEventArgs e)
+
+        private void dgvWarranty_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && dgvWarranty.Rows[e.RowIndex].Cells["WarrantyID"].Value != null)
             {
@@ -81,13 +88,13 @@ namespace WFQuanLyCuaHang.Forms
                 // Xử lí định dạng ngày
                 DateTime StartDate;
                 if (DateTime.TryParse(row.Cells["StartDate"].Value.ToString(), out StartDate))
-                    txtStartDate.Text = StartDate.ToString("M-dd-yyyy");
+                    txtStartDate.Text = StartDate.ToString("M-d-yyyy");
                 else
                     txtStartDate.Text = "";
 
                 DateTime EndDate;
                 if (DateTime.TryParse(row.Cells["EndDate"].Value.ToString(), out EndDate))
-                    txtEndDate.Text = EndDate.ToString("M-dd-yyyy");
+                    txtEndDate.Text = EndDate.ToString("M-d-yyyy");
                 else
                     txtEndDate.Text = "";
             }
@@ -168,10 +175,19 @@ namespace WFQuanLyCuaHang.Forms
         {
             if (!isLoaded)
                 return;
+
             DateTime startDate;
+            string startDateText = txtStartDate.Text.Trim();
+
+            // Kiểm tra nếu txtStartDate.Text có giá trị hợp lệ
+            if (string.IsNullOrEmpty(startDateText))
+            {
+                MessageBox.Show("Vui lòng nhập ngày bắt đầu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             // Định dạng tháng/ngày/năm (ví dụ: 4/18/2025)
-            if (DateTime.TryParseExact(txtStartDate.Text, "M-d-yyyy",
+            if (DateTime.TryParseExact(startDateText, "M-d-yyyy",
                 CultureInfo.InvariantCulture, DateTimeStyles.None, out startDate))
             {
                 DateTime newEndDate = startDate;
@@ -187,6 +203,9 @@ namespace WFQuanLyCuaHang.Forms
                     case "12 tháng":
                         newEndDate = startDate.AddMonths(12);
                         break;
+                    default:
+                        MessageBox.Show("Chưa chọn gói gia hạn.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                 }
 
                 txtEndDate.Text = newEndDate.ToString("M-d-yyyy");
@@ -198,7 +217,13 @@ namespace WFQuanLyCuaHang.Forms
             }
         }
 
+
         private void txtStartDate_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtStartDate_TextChanged_1(object sender, EventArgs e)
         {
 
         }
