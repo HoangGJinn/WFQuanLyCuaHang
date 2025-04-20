@@ -44,7 +44,6 @@ namespace WFQuanLyCuaHang.Forms
 
                 // Xóa trống các đối tượng trong Panel
                 this.txtImportID.ResetText();
-                this.txtSupplierID.ResetText();
                 this.txtEmployeeID.ResetText();
                 this.txtImportDate.ResetText();
                 this.txtTotalCost.ResetText();
@@ -159,7 +158,6 @@ namespace WFQuanLyCuaHang.Forms
 
             // Disable các TextBox không liên quan
             this.txtImportID.Enabled = false;
-            this.txtSupplierID.Enabled = false;
             this.txtEmployeeID.Enabled = false;
             this.txtImportDate.Enabled = false;
             this.txtTotalCost.Enabled = false;
@@ -210,7 +208,6 @@ namespace WFQuanLyCuaHang.Forms
         {
             // Xóa trống các đối tượng trong Panel
             this.txtImportID.ResetText();
-            this.txtSupplierID.ResetText();
             this.txtEmployeeID.ResetText();
             cboStatus.SelectedIndex = -1;
             cboStatus.Enabled = false;
@@ -248,7 +245,6 @@ namespace WFQuanLyCuaHang.Forms
 
             // Gán dữ liệu từ dòng được chọn lên các textbox
             txtImportID.Text = dgvImport.Rows[r].Cells["ImportID"].Value?.ToString() ?? "";
-            txtSupplierID.Text = dgvImport.Rows[r].Cells["SupplierID"].Value?.ToString() ?? "";
             txtEmployeeID.Text = dgvImport.Rows[r].Cells["EmployeeID"].Value?.ToString() ?? "";
 
             var importDate = dgvImport.Rows[r].Cells["ImportDate"].Value;

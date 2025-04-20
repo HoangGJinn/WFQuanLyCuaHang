@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.timerClock = new System.Windows.Forms.Timer(this.components);
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.txtProductName = new Guna.UI2.WinForms.Guna2TextBox();
@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.dgvCart = new Guna.UI2.WinForms.Guna2DataGridView();
             this.txtSearch = new Guna.UI2.WinForms.Guna2TextBox();
-            this.btnCreateOrder = new FontAwesome.Sharp.IconButton();
+            this.btnCreateImport = new FontAwesome.Sharp.IconButton();
             this.iconButton2 = new FontAwesome.Sharp.IconButton();
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnExit = new FontAwesome.Sharp.IconButton();
@@ -165,26 +165,26 @@
             // 
             // dgvCart
             // 
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            this.dgvCart.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvCart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvCart.ColumnHeadersHeight = 4;
             this.dgvCart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvCart.DefaultCellStyle = dataGridViewCellStyle9;
             this.dgvCart.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dgvCart.Location = new System.Drawing.Point(1115, 353);
             this.dgvCart.Name = "dgvCart";
@@ -242,18 +242,18 @@
             this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             this.txtSearch.Click += new System.EventHandler(this.txtSearch_Click);
             // 
-            // btnCreateOrder
+            // btnCreateImport
             // 
-            this.btnCreateOrder.IconChar = FontAwesome.Sharp.IconChar.None;
-            this.btnCreateOrder.IconColor = System.Drawing.Color.Black;
-            this.btnCreateOrder.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            this.btnCreateOrder.Location = new System.Drawing.Point(1155, 608);
-            this.btnCreateOrder.Name = "btnCreateOrder";
-            this.btnCreateOrder.Size = new System.Drawing.Size(122, 43);
-            this.btnCreateOrder.TabIndex = 13;
-            this.btnCreateOrder.Text = "Nhập hàng";
-            this.btnCreateOrder.UseVisualStyleBackColor = true;
-            this.btnCreateOrder.Click += new System.EventHandler(this.btnCreateOrder_Click);
+            this.btnCreateImport.IconChar = FontAwesome.Sharp.IconChar.None;
+            this.btnCreateImport.IconColor = System.Drawing.Color.Black;
+            this.btnCreateImport.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnCreateImport.Location = new System.Drawing.Point(1155, 608);
+            this.btnCreateImport.Name = "btnCreateImport";
+            this.btnCreateImport.Size = new System.Drawing.Size(122, 43);
+            this.btnCreateImport.TabIndex = 13;
+            this.btnCreateImport.Text = "Nhập hàng";
+            this.btnCreateImport.UseVisualStyleBackColor = true;
+            this.btnCreateImport.Click += new System.EventHandler(this.btnCreateImport_Click_1);
             // 
             // iconButton2
             // 
@@ -306,7 +306,7 @@
             this.ClientSize = new System.Drawing.Size(1459, 663);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.txtSearch);
-            this.Controls.Add(this.btnCreateOrder);
+            this.Controls.Add(this.btnCreateImport);
             this.Controls.Add(this.dgvCart);
             this.Controls.Add(this.iconButton2);
             this.Controls.Add(this.iconButton1);
@@ -320,6 +320,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "FormAddImport1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Home";
             this.Load += new System.EventHandler(this.FormAddImport1_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).EndInit();
@@ -339,7 +340,7 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton iconButton2;
         private Guna.UI2.WinForms.Guna2DataGridView dgvCart;
-        private FontAwesome.Sharp.IconButton btnCreateOrder;
+        private FontAwesome.Sharp.IconButton btnCreateImport;
         private Guna.UI2.WinForms.Guna2TextBox txtSearch;
         private FontAwesome.Sharp.IconButton btnExit;
     }

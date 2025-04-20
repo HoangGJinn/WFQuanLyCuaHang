@@ -157,7 +157,7 @@ namespace WFQuanLyCuaHang.Forms
         }
 
         // Hàm xử lý khi sản phẩm được thêm từ ucProduct
-        public void AddToCart(int productId, string productName, decimal price)
+        public void AddToCart(int productId, int supplierID, string productName, decimal price)
         {
             if (cart == null)
                 cart = new List<CartItem>(); // Đảm bảo đã khởi tạo
@@ -169,7 +169,7 @@ namespace WFQuanLyCuaHang.Forms
             }
             else
             {
-                cart.Add(new CartItem(productId, productName, price, 1));
+                cart.Add(new CartItem(productId, supplierID, productName, price, 1 ));
             }
 
             LoadCartToGrid();

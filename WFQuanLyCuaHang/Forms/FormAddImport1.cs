@@ -19,6 +19,7 @@ namespace WFQuanLyCuaHang.Forms
         public string username;
         public string usertype;
         private DBProduct dbp;
+        private DBAccount dba;
         //List cart
         List<CartItem> cart = new List<CartItem>();
 
@@ -33,7 +34,7 @@ namespace WFQuanLyCuaHang.Forms
             txtProductName.Text = "Hãy chọn sản phẩm!";
             if (usertype == "Customer")
             {
-                btnCreateOrder.Visible = false;
+                btnCreateImport.Visible = false;
                 dgvCart.Visible = false;
             }
 
@@ -157,7 +158,7 @@ namespace WFQuanLyCuaHang.Forms
         }
 
         // Hàm xử lý khi sản phẩm được thêm từ ucProduct
-        public void AddToCart(int productId, string productName, decimal price)
+        public void AddToCart(int productId, int supplierID, string productName, decimal price)
         {
             if (cart == null)
                 cart = new List<CartItem>(); // Đảm bảo đã khởi tạo
@@ -169,7 +170,7 @@ namespace WFQuanLyCuaHang.Forms
             }
             else
             {
-                cart.Add(new CartItem(productId, productName, price, 1));
+                cart.Add(new CartItem(productId, supplierID, productName, price, 1 ));
             }
 
             LoadCartToGrid();
@@ -195,6 +196,7 @@ namespace WFQuanLyCuaHang.Forms
             dgvCart.DataSource = cart.Select(c => new
             {
                 Mã = c.ProductID,
+                Ncc = c.SupplierID,
                 Tên = c.ProductName,
                 Giá = c.Price.ToString("N0") + "đ",
                 Số_Lượng = c.Quantity,
@@ -209,28 +211,7 @@ namespace WFQuanLyCuaHang.Forms
 
         }
 
-        private void btnCreateOrder_Click(object sender, EventArgs e)
-        {
-            if (cart.Count == 0)
-            {
-                MessageBox.Show("Giỏ hàng đang trống.");
-                return;
-            }
 
-
-            decimal totalAmount = cart.Sum(item => item.TotalPrice());
-            var formCreateOrder = new FCreateOrder(cart, username, usertype, totalAmount);
-            formCreateOrder.ShowDialog();
-
-            // Sau khi formOrder hoàn tất
-            if (formCreateOrder.OrderPlacedSuccessfully)
-            {
-                cart.Clear();
-                LoadCartToGrid();
-                ResetCartButtons();
-            }
-
-        }
 
 
         private void ResetCartButtons()
@@ -304,6 +285,28 @@ namespace WFQuanLyCuaHang.Forms
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void btnCreateImport_Click_1(object sender, EventArgs e)
+        {
+            if (cart.Count == 0)
+            {
+                MessageBox.Show("Giỏ hàng đang trống.");
+                return;
+            }
+
+
+            decimal totalAmount = cart.Sum(item => item.TotalPrice());
+            var formCreateImport = new FCreateImport(cart, username, usertype, totalAmount);
+            formCreateImport.ShowDialog();
+
+            // Sau khi formOrder hoàn tất
+            if (formCreateImport.OrderPlacedSuccessfully)
+            {
+                cart.Clear();
+                LoadCartToGrid();
+                ResetCartButtons();
+            }
         }
     }
 }

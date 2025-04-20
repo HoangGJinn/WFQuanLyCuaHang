@@ -24,10 +24,12 @@ namespace WFQuanLyCuaHang.ProductControl
         private int ProductID;
         public string ProductName { get; private set; }
         private decimal Price;
+        private int SupplierID;
+
         private FormAddImport1 formAddImport1;
 
         // Delegate cho sự kiện thêm vào giỏ hàng
-        public delegate void AddToCartHandler(int productId, string productName, decimal price);
+        public delegate void AddToCartHandler(int productId, int supplierID, string productName, decimal price);
         public event AddToCartHandler OnAddToCart;
         //Remove
         public delegate void RemoveFromCartHandler(int productId);
@@ -75,46 +77,64 @@ namespace WFQuanLyCuaHang.ProductControl
         public void LoadProduct(int productID)
         {
             DataSet ds = dbp.GetPicture(productID);
-            if (ds.Tables[0].Rows.Count > 0)
+
+            if (ds != null && ds.Tables.Count > 0 && ds.Tables[0].Rows.Count > 0)
             {
                 DataRow row = ds.Tables[0].Rows[0];
 
-                // Gán vào các biến lớp
-                this.ProductID = productID;
-                this.ProductName = row["ProductName"].ToString();
-                this.Price = Convert.ToDecimal(row["Price"]);
-
-                label1.Text = ProductName;
-                label2.Text = Price.ToString("N0") + "đ";
-
-                // Load ảnh
-                byte[] imageBytes = row["Image"] as byte[];
-                if (imageBytes != null)
+                // Kiểm tra tồn tại các cột cần thiết
+                if (ds.Tables[0].Columns.Contains("SupplierID") &&
+                    ds.Tables[0].Columns.Contains("ProductName") &&
+                    ds.Tables[0].Columns.Contains("Price"))
                 {
-                    try
+                    // Gán vào các biến lớp
+                    this.ProductID = productID;
+                    this.SupplierID = Convert.ToInt32(row["SupplierID"]);
+                    this.ProductName = row["ProductName"].ToString();
+                    this.Price = Convert.ToDecimal(row["Price"]);
+
+                    label1.Text = ProductName;
+                    label2.Text = Price.ToString("N0") + "đ";
+
+                    // Load ảnh
+                    if (ds.Tables[0].Columns.Contains("Image"))
                     {
-                        using (MemoryStream ms = new MemoryStream(imageBytes))
+                        byte[] imageBytes = row["Image"] as byte[];
+                        if (imageBytes != null && imageBytes.Length > 0)
                         {
-                            pictureBox1.Image = Image.FromStream(ms);
+                            try
+                            {
+                                using (MemoryStream ms = new MemoryStream(imageBytes))
+                                {
+                                    pictureBox1.Image = Image.FromStream(ms);
+                                }
+                            }
+                            catch
+                            {
+                                pictureBox1.Image = Properties.Resources._ff00cc__1__removebg_preview1;
+                            }
+                        }
+                        else
+                        {
+                            pictureBox1.Image = Properties.Resources._ff00cc__1__removebg_preview1;
                         }
                     }
-                    catch
+                    else
                     {
-                        // Nếu lỗi ảnh, dùng ảnh mặc định
                         pictureBox1.Image = Properties.Resources._ff00cc__1__removebg_preview1;
                     }
+
+                    label1.Tag = ProductID;
+                    label2.Tag = ProductName;
                 }
                 else
                 {
-                    pictureBox1.Image = Properties.Resources._ff00cc__1__removebg_preview1;
+                    MessageBox.Show("Thiếu cột dữ liệu trong kết quả truy vấn.");
                 }
-
-                label1.Tag = ProductID;
-                label2.Tag = ProductName;
             }
             else
             {
-                MessageBox.Show("Không tìm thấy sản phẩm");
+                MessageBox.Show("Không tìm thấy sản phẩm.");
             }
         }
 
@@ -163,7 +183,7 @@ namespace WFQuanLyCuaHang.ProductControl
                 btnIncrease.Visible = true;
 
                 // Gọi sự kiện nếu có người đăng ký
-                OnAddToCart?.Invoke(ProductID, ProductName, Price);
+                OnAddToCart?.Invoke(ProductID, SupplierID, ProductName, Price);
 
             }
             else

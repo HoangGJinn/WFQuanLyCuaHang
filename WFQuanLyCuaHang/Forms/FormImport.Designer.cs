@@ -29,24 +29,17 @@
         private void InitializeComponent()
         {
             this.pnlOrder = new System.Windows.Forms.Panel();
-            this.txtSupplierID = new System.Windows.Forms.TextBox();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.txtImportDate = new System.Windows.Forms.TextBox();
             this.txtEmployeeID = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.txtImportID = new System.Windows.Forms.TextBox();
             this.txtTotalCost = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dgvImport = new System.Windows.Forms.DataGridView();
-            this.ImportID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdateStatus = new System.Windows.Forms.Button();
@@ -55,7 +48,11 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
+            this.ImportID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImport)).BeginInit();
             this.panel6.SuspendLayout();
@@ -64,14 +61,12 @@
             // pnlOrder
             // 
             this.pnlOrder.Controls.Add(this.cboStatus);
-            this.pnlOrder.Controls.Add(this.txtSupplierID);
             this.pnlOrder.Controls.Add(this.txtImportDate);
             this.pnlOrder.Controls.Add(this.txtEmployeeID);
             this.pnlOrder.Controls.Add(this.label12);
             this.pnlOrder.Controls.Add(this.label15);
             this.pnlOrder.Controls.Add(this.label2);
             this.pnlOrder.Controls.Add(this.label3);
-            this.pnlOrder.Controls.Add(this.label13);
             this.pnlOrder.Controls.Add(this.txtImportID);
             this.pnlOrder.Controls.Add(this.txtTotalCost);
             this.pnlOrder.Controls.Add(this.label14);
@@ -80,13 +75,14 @@
             this.pnlOrder.Size = new System.Drawing.Size(1429, 149);
             this.pnlOrder.TabIndex = 15;
             // 
-            // txtSupplierID
+            // cboStatus
             // 
-            this.txtSupplierID.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtSupplierID.Location = new System.Drawing.Point(639, 27);
-            this.txtSupplierID.Name = "txtSupplierID";
-            this.txtSupplierID.Size = new System.Drawing.Size(190, 39);
-            this.txtSupplierID.TabIndex = 18;
+            this.cboStatus.Font = new System.Drawing.Font("Cambria", 16.2F);
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(1090, 26);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(190, 40);
+            this.cboStatus.TabIndex = 19;
             // 
             // txtImportDate
             // 
@@ -99,7 +95,7 @@
             // txtEmployeeID
             // 
             this.txtEmployeeID.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtEmployeeID.Location = new System.Drawing.Point(1090, 27);
+            this.txtEmployeeID.Location = new System.Drawing.Point(679, 27);
             this.txtEmployeeID.Name = "txtEmployeeID";
             this.txtEmployeeID.Size = new System.Drawing.Size(190, 39);
             this.txtEmployeeID.TabIndex = 14;
@@ -131,7 +127,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(951, 107);
+            this.label2.Location = new System.Drawing.Point(951, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 23);
             this.label2.TabIndex = 11;
@@ -142,22 +138,11 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(467, 103);
+            this.label3.Location = new System.Drawing.Point(507, 103);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(122, 23);
             this.label3.TabIndex = 12;
             this.label3.Text = "Tổng Chi Phí";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label13.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label13.Location = new System.Drawing.Point(467, 35);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(166, 23);
-            this.label13.TabIndex = 2;
-            this.label13.Text = "Mã Nhà Cung Cấp";
             // 
             // txtImportID
             // 
@@ -171,7 +156,7 @@
             // txtTotalCost
             // 
             this.txtTotalCost.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtTotalCost.Location = new System.Drawing.Point(639, 96);
+            this.txtTotalCost.Location = new System.Drawing.Point(679, 96);
             this.txtTotalCost.Name = "txtTotalCost";
             this.txtTotalCost.Size = new System.Drawing.Size(190, 39);
             this.txtTotalCost.TabIndex = 2;
@@ -181,7 +166,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label14.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label14.Location = new System.Drawing.Point(951, 37);
+            this.label14.Location = new System.Drawing.Point(507, 37);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(133, 23);
             this.label14.TabIndex = 3;
@@ -193,7 +178,6 @@
             this.dgvImport.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvImport.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ImportID,
-            this.SupplierID,
             this.EmployeeID,
             this.ImportDate,
             this.TotalCost,
@@ -206,54 +190,6 @@
             this.dgvImport.Size = new System.Drawing.Size(1430, 387);
             this.dgvImport.TabIndex = 16;
             this.dgvImport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImport_CellClick);
-            // 
-            // ImportID
-            // 
-            this.ImportID.DataPropertyName = "ImportID";
-            this.ImportID.FillWeight = 100.495F;
-            this.ImportID.HeaderText = "ImportID";
-            this.ImportID.MinimumWidth = 6;
-            this.ImportID.Name = "ImportID";
-            // 
-            // SupplierID
-            // 
-            this.SupplierID.DataPropertyName = "SupplierID";
-            this.SupplierID.FillWeight = 98.7845F;
-            this.SupplierID.HeaderText = "SupplierID";
-            this.SupplierID.MinimumWidth = 6;
-            this.SupplierID.Name = "SupplierID";
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.DataPropertyName = "EmployeeID";
-            this.EmployeeID.FillWeight = 98.47534F;
-            this.EmployeeID.HeaderText = "EmployeeID";
-            this.EmployeeID.MinimumWidth = 6;
-            this.EmployeeID.Name = "EmployeeID";
-            // 
-            // ImportDate
-            // 
-            this.ImportDate.DataPropertyName = "ImportDate";
-            this.ImportDate.FillWeight = 99.35232F;
-            this.ImportDate.HeaderText = "ImportDate";
-            this.ImportDate.MinimumWidth = 6;
-            this.ImportDate.Name = "ImportDate";
-            // 
-            // TotalCost
-            // 
-            this.TotalCost.DataPropertyName = "TotalCost";
-            this.TotalCost.FillWeight = 97.56368F;
-            this.TotalCost.HeaderText = "TotalCost";
-            this.TotalCost.MinimumWidth = 6;
-            this.TotalCost.Name = "TotalCost";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.FillWeight = 103.8599F;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
             // 
             // panel6
             // 
@@ -359,14 +295,45 @@
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
-            // cboStatus
+            // ImportID
             // 
-            this.cboStatus.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(1090, 96);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(190, 40);
-            this.cboStatus.TabIndex = 19;
+            this.ImportID.DataPropertyName = "ImportID";
+            this.ImportID.FillWeight = 100.495F;
+            this.ImportID.HeaderText = "ImportID";
+            this.ImportID.MinimumWidth = 6;
+            this.ImportID.Name = "ImportID";
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.DataPropertyName = "EmployeeID";
+            this.EmployeeID.FillWeight = 98.47534F;
+            this.EmployeeID.HeaderText = "EmployeeID";
+            this.EmployeeID.MinimumWidth = 6;
+            this.EmployeeID.Name = "EmployeeID";
+            // 
+            // ImportDate
+            // 
+            this.ImportDate.DataPropertyName = "ImportDate";
+            this.ImportDate.FillWeight = 99.35232F;
+            this.ImportDate.HeaderText = "ImportDate";
+            this.ImportDate.MinimumWidth = 6;
+            this.ImportDate.Name = "ImportDate";
+            // 
+            // TotalCost
+            // 
+            this.TotalCost.DataPropertyName = "TotalCost";
+            this.TotalCost.FillWeight = 97.56368F;
+            this.TotalCost.HeaderText = "TotalCost";
+            this.TotalCost.MinimumWidth = 6;
+            this.TotalCost.Name = "TotalCost";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.FillWeight = 103.8599F;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
             // 
             // FormImport
             // 
@@ -391,24 +358,16 @@
         #endregion
 
         private System.Windows.Forms.Panel pnlOrder;
-        private System.Windows.Forms.TextBox txtSupplierID;
         private System.Windows.Forms.TextBox txtImportDate;
         private System.Windows.Forms.TextBox txtEmployeeID;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox txtImportID;
         private System.Windows.Forms.TextBox txtTotalCost;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.DataGridView dgvImport;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImportID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn SupplierID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ImportDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TotalCost;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnUpdateStatus;
@@ -418,5 +377,10 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.ComboBox cboStatus;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImportID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EmployeeID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ImportDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalCost;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Status;
     }
 }

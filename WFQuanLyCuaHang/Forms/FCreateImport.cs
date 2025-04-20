@@ -15,33 +15,35 @@ namespace WFQuanLyCuaHang.Forms
     public partial class FCreateImport : Form
     {
         DBAccount dba;
-        DBCustomer dbc;
-        DBOrder dbo;
+        DBEmployee dbe;
+        DBImport dbi;
+        DBImportDetail dbid;
         List<CartItem> cart;
         string username;
         string usertype;
-        decimal totalAmount;
+        decimal totalCost;
 
         public bool OrderPlacedSuccessfully = false;
 
-        public FCreateImport(List<CartItem> cart, string username, string usertype, decimal totalAmount)
+        public FCreateImport(List<CartItem> cart, string username, string usertype, decimal totalCost)
         {
             InitializeComponent();
             this.cart = cart;
             this.username = username;
             this.usertype = usertype;
-            this.totalAmount = totalAmount;
-            dbo = new DBOrder();
+            this.totalCost = totalCost;
+            dbi = new DBImport();
             dba = new DBAccount();
-            dbc = new DBCustomer();
+            dbid = new DBImportDetail();
+            dbe = new DBEmployee();
 
-            lbTotalAmount.Text = "Tổng tiền: " + totalAmount.ToString("N0") + "đ";
+
+            lbTotalAmount.Text = "Tổng tiền: " + totalCost.ToString("N0") + "đ";
         }
 
-        private void FCreateOrder_Load(object sender, EventArgs e)
+        private void FCreateImport_Load(object sender, EventArgs e)
         {
-            LoadCustomerList();
-            LoadPaymentMethods();
+            LoadEmployeeList();
         }
 
         private void lbPayment_Click(object sender, EventArgs e)
@@ -64,106 +66,82 @@ namespace WFQuanLyCuaHang.Forms
 
         }
         //Get EmployeeID
-        private int LoadEmployeeID()
-        {
-            string error = "";
-            DataTable dt = dba.GetUserInfoByUsername(username, ref error);
-            if (dt != null && dt.Rows.Count > 0)
-            {
-                int employeeID = Convert.ToInt32(dt.Rows[0]["EmployeeID"]);
-                // Sử dụng employeeID nếu cần
-                return employeeID;
-            }
-            else
-            {
-                MessageBox.Show("Không tìm thấy thông tin nhân viên.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return -1; // Return a default value if no employee ID is found
-        }
         private void btnPlaceOrder_Click(object sender, EventArgs e)
         {
-            if (cbCustomerID.SelectedItem == null)
+            if (cbEmployeeID.SelectedItem == null)
             {
                 MessageBox.Show("Vui lòng chọn khách hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            if (string.IsNullOrWhiteSpace(txtAddress.Text))
-            {
-                MessageBox.Show("Vui lòng nhập địa chỉ giao hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            if (cbPayment.SelectedItem == null)
-            {
-                MessageBox.Show("Vui lòng chọn phương thức thanh toán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             // Lấy dữ liệu từ form
-            int customerID = Convert.ToInt32(cbCustomerID.SelectedValue); // giả sử cbCustomerID đã gán ValueMember = CustomerID
-            int employeeID = LoadEmployeeID();
-            if (employeeID == -1)  // Kiểm tra trường hợp employeeID là -1
+            int employeeID = Convert.ToInt32(cbEmployeeID.SelectedValue);
+            if (employeeID == -1)
             {
                 MessageBox.Show("Không thể xác định thông tin nhân viên. Vui lòng kiểm tra lại dữ liệu người dùng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                return;  // Ngừng thực hiện nếu không có employeeID hợp lệ
+                return;
             }
-            DateTime orderDate = dtpOrderDate.Value;
-            string shippingAddress = txtAddress.Text;
-            string paymentMethod = cbPayment.Text;
 
-
+            DateTime importDate = dtpImportDate.Value;
             string err = "";
-            int newOrderID = 0;
+            int newImportID = 0;
 
-            // Chuyển cart sang danh sách OrderDetail
-            List<DBOrder.OrderDetail> orderDetails = cart.Select(item => new DBOrder.OrderDetail
+            if (cart == null || cart.Count == 0)
             {
-                ProductID = item.ProductID,
-                Quantity = item.Quantity,
-                Price = item.Price
-            }).ToList();
-
-            // Gọi hàm trong BAL
-            bool result = dbo.CreateFullOrder(ref err, customerID, employeeID, orderDate, totalAmount, paymentMethod, shippingAddress, orderDetails, ref newOrderID);
-
-            if (result)
-            {
-                MessageBox.Show($"Đặt hàng thành công! Mã đơn hàng: {newOrderID}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                OrderPlacedSuccessfully = true;
-                this.Close();
+                MessageBox.Show("Giỏ hàng đang trống. Vui lòng thêm sản phẩm trước khi nhập hàng.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            try
             {
-                MessageBox.Show("Đặt hàng thất bại: " + err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Chuyển cart sang danh sách ImportDetail
+                List<DBImport.ImportDetail> importDetails = cart.Select(item => new DBImport.ImportDetail
+                {
+                    ProductID = item.ProductID,
+                    SupplierID = item.SupplierID,
+                    Quantity = item.Quantity,
+                    Price = item.Price
+                }).ToList();
+
+                // Gọi hàm trong BAL
+                bool result = dbi.CreateFullImport(ref err, employeeID, importDate, totalCost, importDetails, ref newImportID);
+
+                if (result)
+                {
+                    MessageBox.Show($"Nhập hàng thành công! Mã nhập hàng: {newImportID}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    OrderPlacedSuccessfully = true;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Nhập hàng thất bại: " + err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Nhập hàng thất bại: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        private void LoadCustomerList()
+
+        private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DataSet ds = dbc.GetCustomers();
+
+        }
+        private void LoadEmployeeList()
+        {
+            DataSet ds = dbe.GetEmployees();
             if (ds != null && ds.Tables.Count > 0)
             {
-                cbCustomerID.DataSource = ds.Tables[0];
-                cbCustomerID.DisplayMember = "FullName";  // Cột bạn muốn hiển thị
-                cbCustomerID.ValueMember = "CustomerID";      // Cột dùng để lấy ID
-                cbCustomerID.SelectedIndex = -1; // Đặt ban đầu là chưa chọn
+                cbEmployeeID.DataSource = ds.Tables[0];
+                cbEmployeeID.DisplayMember = "FullName";  // Cột bạn muốn hiển thị
+                cbEmployeeID.ValueMember = "EmployeeID";      // Cột dùng để lấy ID
+                cbEmployeeID.SelectedIndex = -1; // Đặt ban đầu là chưa chọn
             }
             else
             {
                 MessageBox.Show("Không thể tải danh sách khách hàng.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void LoadPaymentMethods()
-        {
-            cbPayment.Items.Add("Tiền mặt");
-            cbPayment.Items.Add("Chuyển khoản");
-            cbPayment.Items.Add("Thẻ tín dụng");
-            cbPayment.SelectedIndex = 0; // Chọn mặc định
-        }
-
-
     }
 }

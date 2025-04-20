@@ -13,10 +13,13 @@ namespace WFQuanLyCuaHang
         public decimal Price { get; set; }
         public int Quantity { get; set; }
 
+        public int SupplierID { get; set; }
+
         public decimal Total => Price * Quantity;
-        public CartItem(int productId, string productName, decimal price, int quantity)
+        public CartItem(int productId, int supplierId, string productName, decimal price, int quantity )
         {
             ProductID = productId;
+            SupplierID = supplierId;
             ProductName = productName;
             Price = price;
             Quantity = quantity;
