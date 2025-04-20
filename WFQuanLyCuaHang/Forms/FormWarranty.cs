@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
-using BusinessLogicLayer;
 using System.Linq.Expressions;
 namespace WFQuanLyCuaHang.Forms
 {
@@ -200,11 +199,6 @@ namespace WFQuanLyCuaHang.Forms
         }
 
         private void txtStartDate_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }

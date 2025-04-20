@@ -46,10 +46,7 @@ namespace WFQuanLyCuaHang.Forms
             iconButton1.Enabled = false;
 
         }
-        private void lblDatetime_Click(object sender, EventArgs e)
-        {
 
-        }
         //Load laptop
         private void LoadLaptopintoLayout()
         {
@@ -116,27 +113,7 @@ namespace WFQuanLyCuaHang.Forms
             }
         }
 
-        private void txtHello_Click(object sender, EventArgs e)
-        {
 
-        }
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2TextBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        public void HienThiChiTietSanPham(string ten, string gia, string moTa)
-        {
-            txtProductName.Text = ten;
-            TxtPrice.Text = gia;
-            txtDescription.Text = moTa; // Label hiển thị mô tả
-        }
 
         private void iconButton2_Click(object sender, EventArgs e)
         {
@@ -170,7 +147,7 @@ namespace WFQuanLyCuaHang.Forms
             }
             else
             {
-                cart.Add(new CartItem(productId, supplierID, productName, price, 1 ));
+                cart.Add(new CartItem(productId, supplierID, productName, price, 1));
             }
 
             LoadCartToGrid();

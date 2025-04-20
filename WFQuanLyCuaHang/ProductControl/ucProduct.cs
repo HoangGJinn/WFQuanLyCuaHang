@@ -162,7 +162,15 @@ namespace WFQuanLyCuaHang.ProductControl
                     decimal gia = Convert.ToDecimal(row["Price"]);
                     string giaText = gia.ToString("N0") + "đ";
 
-                    frmHome.HienThiChiTietSanPham(ten, giaText, moTa);
+                    if (frmHome != null)
+                    {
+                        frmHome.HienThiChiTietSanPham(ten, giaText, moTa);
+                    }
+                    else
+                    {
+                        // Không làm gì cả, hoặc hiển thị thông báo tùy ý
+                        // MessageBox.Show("Chức năng xem chi tiết không khả dụng ở màn hình này.");
+                    }
                 }
             }
             else
@@ -170,6 +178,7 @@ namespace WFQuanLyCuaHang.ProductControl
                 MessageBox.Show("Không thể lấy mã sản phẩm!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void btnOrder_Click(object sender, EventArgs e)
         {

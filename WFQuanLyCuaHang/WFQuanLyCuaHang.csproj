@@ -123,6 +123,18 @@
     <Compile Include="Forms\FEmployeeAccount.Designer.cs">
       <DependentUpon>FEmployeeAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormAddImport1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddImport1.Designer.cs">
+      <DependentUpon>FormAddImport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWarranty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWarranty.Designer.cs">
+      <DependentUpon>FormWarranty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FOverview.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FEmployeeAccount.resx">
       <DependentUpon>FEmployeeAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddImport1.resx">
+      <DependentUpon>FormAddImport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWarranty.resx">
+      <DependentUpon>FormWarranty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FOverview.resx">
       <DependentUpon>FOverview.cs</DependentUpon>
