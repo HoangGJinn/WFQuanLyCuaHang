@@ -106,7 +106,7 @@ namespace WFQuanLyCuaHang.Forms
             //update status
             if (isSuccess)
             {
-                bool createUserResult = dba.CreateDatabaseUser(ref err, username, password, SessionContext.CurrentUserType);
+                bool createUserResult = dba.CreateDatabaseUser(ref err, username, password, "Employee");
                 if (!createUserResult)
                 {
                     MessageBox.Show("Tạo login SQL thất bại: " + err);

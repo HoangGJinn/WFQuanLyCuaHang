@@ -14,7 +14,7 @@ namespace DataAccessLayer
         SqlCommand comm = null;
         SqlDataAdapter da = null;
 
-        private static string defaultConnStr = @"Data Source=(local);Initial Catalog=LaptopStore2;Integrated Security=True";
+        private static string defaultConnStr = @"Data Source=.;Initial Catalog=LaptopStore2;Integrated Security=True";
 
         public DAL()
         {
@@ -99,28 +99,5 @@ namespace DataAccessLayer
             conn.Close();
             return dt;
         }
-
-        // Thực thi câu lệnh ExecuteScalar
-        public object ExecuteScalar(string query, CommandType commandType, params SqlParameter[] parameters)
-        {
-            object result = null;
-            using (SqlConnection conn = new SqlConnection(this.conn.ConnectionString))  // Dùng kết nối động từ đối tượng DAL
-            {
-                conn.Open();
-                using (SqlCommand cmd = new SqlCommand(query, conn))
-                {
-                    cmd.CommandType = commandType;
-
-                    if (parameters != null)
-                    {
-                        cmd.Parameters.AddRange(parameters);
-                    }
-
-                    result = cmd.ExecuteScalar();  // Thực thi và lấy kết quả đầu tiên
-                }
-            }
-            return result;
-        }
-
     }
 }
