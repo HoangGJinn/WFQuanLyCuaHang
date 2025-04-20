@@ -44,8 +44,10 @@ namespace WFQuanLyCuaHang.Forms
                 this.txtOrderID.ResetText();
                 this.txtCustomerID.ResetText();
                 this.txtEmployeeID.ResetText();
+
                 cboStatus.Enabled = false;
                 cboStatus.SelectedIndex = -1;
+
                 this.txtAddr.ResetText();
                 this.txtTotal.ResetText();
                 this.txtDate.ResetText();
@@ -211,6 +213,7 @@ namespace WFQuanLyCuaHang.Forms
             this.txtOrderID.Enabled = false;
             this.txtPayMethod.Enabled = false;
             this.txtTotal.Enabled = false;
+
             // Chỉ cho thao tác trên combo trạng thái
             cboStatus.Enabled = true;
         }
@@ -221,8 +224,10 @@ namespace WFQuanLyCuaHang.Forms
             this.txtOrderID.ResetText();
             this.txtCustomerID.ResetText();
             this.txtEmployeeID.ResetText();
+
             cboStatus.SelectedIndex = -1;
             cboStatus.Enabled = false;
+
             this.txtAddr.ResetText();
             this.txtTotal.ResetText();
             this.txtDate.ResetText();

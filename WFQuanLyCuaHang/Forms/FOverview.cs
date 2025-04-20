@@ -95,11 +95,11 @@ namespace WFQuanLyCuaHang.Forms
             OpenChildForm(new FSoldProducts());
         }
 
-        private void btnPendingOrder_Click(object sender, EventArgs e)
-        {
-            ActivateButton(sender, RGBColors.color5);
-            OpenChildForm(new FPendingOrder());
-        }
+        //private void btnPendingOrder_Click(object sender, EventArgs e)
+        //{
+        //    ActivateButton(sender, RGBColors.color5);
+        //    OpenChildForm(new FPendingOrder());
+        //}
 
         private void FOverview_Load(object sender, EventArgs e)
         {
@@ -116,10 +116,28 @@ namespace WFQuanLyCuaHang.Forms
             this.Close();
         }
 
-        private void iconButton2_Click(object sender, EventArgs e)
+        //private void iconButton2_Click(object sender, EventArgs e)
+        //{
+        //    ActivateButton(sender, RGBColors.color5);
+        //    OpenChildForm(new FStockQuantity());
+        //}
+
+        private void iconButton2_Click_1(object sender, EventArgs e)
         {
             ActivateButton(sender, RGBColors.color5);
             OpenChildForm(new FStockQuantity());
+        }
+
+        private void btnPendingOrder_Click_1(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color5);
+            OpenChildForm(new FPendingOrder());
+        }
+
+        private void btnUnavailableWarranty_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color5);
+            OpenChildForm(new FAvailableWarranty());
         }
     }
 }

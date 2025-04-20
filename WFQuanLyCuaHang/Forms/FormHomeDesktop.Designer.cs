@@ -47,6 +47,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvCart)).BeginInit();
             this.SuspendLayout();
             // 
+            // timerClock
+            // 
+            this.timerClock.Tick += new System.EventHandler(this.timerClock_Tick);
+            // 
             // flowLayoutPanel2
             // 
             this.flowLayoutPanel2.AutoScroll = true;
@@ -82,6 +86,7 @@
             this.txtProductName.SelectedText = "";
             this.txtProductName.Size = new System.Drawing.Size(200, 51);
             this.txtProductName.TabIndex = 6;
+            this.txtProductName.TextChanged += new System.EventHandler(this.txtProductName_TextChanged);
             // 
             // TxtPrice
             // 
@@ -106,6 +111,7 @@
             this.TxtPrice.SelectedText = "";
             this.TxtPrice.Size = new System.Drawing.Size(200, 44);
             this.TxtPrice.TabIndex = 7;
+            this.TxtPrice.TextChanged += new System.EventHandler(this.TxtPrice_TextChanged);
             // 
             // txtDescription
             // 
@@ -140,9 +146,10 @@
             this.lbName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbName.Location = new System.Drawing.Point(1115, 37);
             this.lbName.Name = "lbName";
-            this.lbName.Size = new System.Drawing.Size(85, 25);
+            this.lbName.Size = new System.Drawing.Size(70, 20);
             this.lbName.TabIndex = 9;
             this.lbName.Text = "Tên SP";
+            this.lbName.Click += new System.EventHandler(this.lbName_Click);
             // 
             // label1
             // 
@@ -150,9 +157,10 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(1123, 88);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 25);
+            this.label1.Size = new System.Drawing.Size(38, 20);
             this.label1.TabIndex = 10;
             this.label1.Text = "Giá";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // dgvCart
             // 

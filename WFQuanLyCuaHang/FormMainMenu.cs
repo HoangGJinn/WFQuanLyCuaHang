@@ -183,7 +183,6 @@ namespace WFQuanLyCuaHang
             OpenChidlForm(new FormEmployees());
 
         }
-
         // Drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -288,5 +287,10 @@ namespace WFQuanLyCuaHang
             lblDatetime.Text = DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy");
         }
 
+        private void btnWarranty_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color4);
+            OpenChidlForm(new FormWarranty());
+        }
     }
 }

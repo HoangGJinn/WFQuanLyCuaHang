@@ -133,6 +133,10 @@
             this.txtTotal.Size = new System.Drawing.Size(169, 39);
             this.txtTotal.TabIndex = 17;
             // 
+            // txtStatus
+            // 
+
+            // 
             // txtCustomerID
             // 
             this.txtCustomerID.Location = new System.Drawing.Point(914, 20);

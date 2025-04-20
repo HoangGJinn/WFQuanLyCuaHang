@@ -48,9 +48,13 @@
     <Reference Include="Guna.UI2, Version=2.0.4.7, Culture=neutral, PublicKeyToken=8b9d14aa5142e261, processorArchitecture=MSIL">
       <HintPath>packages\Guna.UI2.WinForms.2.0.4.7\lib\net48\Guna.UI2.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.VisualStudio.LiveShare, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.VisualStudio.LiveShare.1.1.57\lib\net461\Microsoft.VisualStudio.LiveShare.dll</HintPath>
+    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -83,11 +87,23 @@
     <Compile Include="Forms\FAdminAccount.Designer.cs">
       <DependentUpon>FAdminAccount.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FAvailableWarranty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FAvailableWarranty.Designer.cs">
+      <DependentUpon>FAvailableWarranty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FCreateAccountNV.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\FCreateAccountNV.Designer.cs">
       <DependentUpon>FCreateAccountNV.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FCreateImport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FCreateImport.Designer.cs">
+      <DependentUpon>FCreateImport.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FCreateOrder.cs">
       <SubType>Form</SubType>
@@ -106,6 +122,18 @@
     </Compile>
     <Compile Include="Forms\FEmployeeAccount.Designer.cs">
       <DependentUpon>FEmployeeAccount.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormAddImport1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormAddImport1.Designer.cs">
+      <DependentUpon>FormAddImport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\FormWarranty.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormWarranty.Designer.cs">
+      <DependentUpon>FormWarranty.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FOverview.cs">
       <SubType>Form</SubType>
@@ -236,8 +264,14 @@
     <EmbeddedResource Include="Forms\FAdminAccount.resx">
       <DependentUpon>FAdminAccount.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FAvailableWarranty.resx">
+      <DependentUpon>FAvailableWarranty.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\FCreateAccountNV.resx">
       <DependentUpon>FCreateAccountNV.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FCreateImport.resx">
+      <DependentUpon>FCreateImport.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FCreateOrder.resx">
       <DependentUpon>FCreateOrder.cs</DependentUpon>
@@ -247,6 +281,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FEmployeeAccount.resx">
       <DependentUpon>FEmployeeAccount.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormAddImport1.resx">
+      <DependentUpon>FormAddImport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormWarranty.resx">
+      <DependentUpon>FormWarranty.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FOverview.resx">
       <DependentUpon>FOverview.cs</DependentUpon>

@@ -164,6 +164,9 @@ namespace WFQuanLyCuaHang.Forms
             cbPayment.SelectedIndex = 0; // Chọn mặc định
         }
 
+        private void cbCustomerID_SelectedIndexChanged(object sender, EventArgs e)
+        {
 
+        }
     }
 }

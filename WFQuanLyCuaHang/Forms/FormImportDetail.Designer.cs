@@ -361,7 +361,7 @@
             this.Controls.Add(this.dgvImportDetail);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormImportDetail";
-            this.Text = "FormAddOrder";
+            this.Text = "FormImportDetail";
             this.Load += new System.EventHandler(this.FormImportDetail_Load);
             this.panel6.ResumeLayout(false);
             this.pnlOrder.ResumeLayout(false);
