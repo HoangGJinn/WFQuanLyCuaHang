@@ -104,7 +104,7 @@ namespace WFQuanLyCuaHang
             // Hash lại mật khẩu người dùng nhập vào
             string hashedPassword = CPass.HashPasswordWithSalt(password, salt);
 
-            if(hashedPassword != storedHashedPassword)
+            if (hashedPassword != storedHashedPassword)
             {
                 MessageBox.Show("Tên đăng nhập hoặc mật khẩu không chính xác.");
                 return;
@@ -126,10 +126,18 @@ namespace WFQuanLyCuaHang
             SessionContext.ConnectionString = connStr;
 
             DALManager.Reset(); // Đảm bảo DAL chưa bị giữ instance cũ
-            // Khởi tạo DAL duy nhất
-            DALManager.Initialize(connStr);
 
+            // Nếu là admin, không truyền chuỗi kết nối, sử dụng kết nối mặc định
+            if (usertype == "Admin")
+            {
+                DALManager.Initialize(null);  // Truyền null để sử dụng kết nối mặc định
+            }
+            else
+            {
+                DALManager.Initialize(connStr);  // Truyền chuỗi kết nối cho user
+            }
 
+            // Nhớ mật khẩu nếu người dùng chọn
             if (chkRemember.Checked)
             {
                 Properties.Settings.Default.Username = username;
@@ -142,10 +150,12 @@ namespace WFQuanLyCuaHang
                 Properties.Settings.Default.RememberMe = false;
                 Properties.Settings.Default.Save();
             }
+
             FormMainMenu fMain = new FormMainMenu(username, usertype);
             this.Hide();
             fMain.Show();
         }
+
 
         private void fLogin_Load(object sender, EventArgs e)
         {

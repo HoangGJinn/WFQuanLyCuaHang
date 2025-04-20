@@ -183,8 +183,6 @@ namespace WFQuanLyCuaHang
             OpenChidlForm(new FormEmployees());
 
         }
-
-
         // Drag form
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();

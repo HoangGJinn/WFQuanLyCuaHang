@@ -10,20 +10,24 @@ namespace DataAccessLayer
         // Kiểm tra xem DAL đã được khởi tạo chưa
         public static bool IsInitialized => _instance != null;
 
-        /// <summary>
         /// Khởi tạo DAL với chuỗi kết nối tùy chỉnh (thường sau đăng nhập)
-        /// </summary>
         public static void Initialize(string connectionString)
         {
             if (_instance == null)
             {
+                // Nếu chuỗi kết nối là null hoặc rỗng, sử dụng chuỗi kết nối mặc định
+                if (string.IsNullOrEmpty(connectionString))
+                {
+                    connectionString = _defaultConnectionString;
+                }
+
                 _instance = new DAL(connectionString);
             }
         }
 
-        /// <summary>
+
+
         /// Lấy instance DAL hiện tại. Nếu chưa Initialize, sẽ trả về instance mặc định.
-        /// </summary>
         public static DAL Instance
         {
             get
@@ -37,9 +41,7 @@ namespace DataAccessLayer
             }
         }
 
-        /// <summary>
         /// Reset instance, ví dụ khi đăng xuất
-        /// </summary>
         public static void Reset()
         {
             _instance = null;

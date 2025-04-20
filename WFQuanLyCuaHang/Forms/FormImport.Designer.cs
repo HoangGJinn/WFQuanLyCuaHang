@@ -40,6 +40,7 @@
             this.txtTotalCost = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dgvImport = new System.Windows.Forms.DataGridView();
+
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdateStatus = new System.Windows.Forms.Button();

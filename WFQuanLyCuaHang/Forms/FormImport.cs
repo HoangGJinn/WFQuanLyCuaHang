@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using BusinessLogicLayer;
 using System.Windows.Controls;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace WFQuanLyCuaHang.Forms
 {
@@ -43,7 +42,6 @@ namespace WFQuanLyCuaHang.Forms
                 dgvImport.DataSource = dtImport;
 
                 // Xóa trống các đối tượng trong Panel
-                this.txtImportID.ResetText();
                 this.txtEmployeeID.ResetText();
                 this.txtImportDate.ResetText();
                 this.txtTotalCost.ResetText();
@@ -183,7 +181,6 @@ namespace WFQuanLyCuaHang.Forms
                 {
                     string err = "";
                     int importID = int.Parse(txtImportID.Text);
-                    string status = Status;
 
                     bool f = dbi.UpdateImportStatus(ref err, importID, status);
                     if (f)
