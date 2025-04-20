@@ -157,7 +157,7 @@ namespace WFQuanLyCuaHang.Forms
         }
 
         // Hàm xử lý khi sản phẩm được thêm từ ucProduct
-        public void AddToCart(int productId, string productName, decimal price)
+        public void AddToCart(int productId, int supplierID, string productName, decimal price)
         {
             if (cart == null)
                 cart = new List<CartItem>(); // Đảm bảo đã khởi tạo
@@ -169,7 +169,7 @@ namespace WFQuanLyCuaHang.Forms
             }
             else
             {
-                cart.Add(new CartItem(productId, productName, price, 1));
+                cart.Add(new CartItem(productId, supplierID, productName, price, 1 ));
             }
 
             LoadCartToGrid();
@@ -274,6 +274,31 @@ namespace WFQuanLyCuaHang.Forms
 
             // Cập nhật giao diện giỏ hàng
             LoadCartToGrid();
+        }
+
+        private void txtProductName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtPrice_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lbName_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void timerClock_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }
