@@ -215,7 +215,7 @@ namespace WFQuanLyCuaHang.Forms
             this.btnThem.Enabled = true;
             this.btnHuy.Enabled = true;
 
-            // Gắn lại sự kiện CellClick cho dgvImport (thay vì dgvOrder)
+            // Gắn lại sự kiện CellClick cho dgvImport
             dgvImport.CellClick += new DataGridViewCellEventHandler(dgvImport_CellClick);
         }
 

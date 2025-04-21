@@ -31,6 +31,7 @@
             this.tabControl_Main = new System.Windows.Forms.TabControl();
             this.tabOrder = new System.Windows.Forms.TabPage();
             this.pnlOrder = new System.Windows.Forms.Panel();
+            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.txtDate = new System.Windows.Forms.TextBox();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.txtCustomerID = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.cboStatus = new System.Windows.Forms.ComboBox();
             this.tabControl_Main.SuspendLayout();
             this.tabOrder.SuspendLayout();
             this.pnlOrder.SuspendLayout();
@@ -119,36 +119,46 @@
             this.pnlOrder.Size = new System.Drawing.Size(1429, 149);
             this.pnlOrder.TabIndex = 14;
             // 
+            // cboStatus
+            // 
+            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboStatus.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboStatus.FormattingEnabled = true;
+            this.cboStatus.Location = new System.Drawing.Point(896, 99);
+            this.cboStatus.Name = "cboStatus";
+            this.cboStatus.Size = new System.Drawing.Size(154, 31);
+            this.cboStatus.TabIndex = 19;
+            // 
             // txtDate
             // 
-            this.txtDate.Location = new System.Drawing.Point(538, 19);
+            this.txtDate.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDate.Location = new System.Drawing.Point(522, 30);
             this.txtDate.Name = "txtDate";
-            this.txtDate.Size = new System.Drawing.Size(152, 39);
+            this.txtDate.Size = new System.Drawing.Size(152, 31);
             this.txtDate.TabIndex = 18;
             // 
             // txtTotal
             // 
-            this.txtTotal.Location = new System.Drawing.Point(1205, 94);
+            this.txtTotal.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotal.Location = new System.Drawing.Point(1196, 97);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(169, 39);
+            this.txtTotal.Size = new System.Drawing.Size(169, 31);
             this.txtTotal.TabIndex = 17;
-            // 
-            // txtStatus
-            // 
-
             // 
             // txtCustomerID
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(914, 20);
+            this.txtCustomerID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCustomerID.Location = new System.Drawing.Point(896, 30);
             this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(154, 39);
+            this.txtCustomerID.Size = new System.Drawing.Size(154, 31);
             this.txtCustomerID.TabIndex = 15;
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Location = new System.Drawing.Point(179, 94);
+            this.txtEmployeeID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmployeeID.Location = new System.Drawing.Point(170, 98);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(116, 39);
+            this.txtEmployeeID.Size = new System.Drawing.Size(116, 31);
             this.txtEmployeeID.TabIndex = 14;
             // 
             // label12
@@ -156,7 +166,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label12.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label12.Location = new System.Drawing.Point(10, 37);
+            this.label12.Location = new System.Drawing.Point(14, 38);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(133, 23);
             this.label12.TabIndex = 1;
@@ -167,7 +177,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label4.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label4.Location = new System.Drawing.Point(1084, 30);
+            this.label4.Location = new System.Drawing.Point(1097, 38);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(74, 23);
             this.label4.TabIndex = 13;
@@ -178,7 +188,7 @@
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label15.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label15.Location = new System.Drawing.Point(10, 106);
+            this.label15.Location = new System.Drawing.Point(10, 99);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(137, 23);
             this.label15.TabIndex = 4;
@@ -197,7 +207,8 @@
             // 
             // txtAddr
             // 
-            this.txtAddr.Location = new System.Drawing.Point(1205, 16);
+            this.txtAddr.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAddr.Location = new System.Drawing.Point(1196, 12);
             this.txtAddr.Multiline = true;
             this.txtAddr.Name = "txtAddr";
             this.txtAddr.Size = new System.Drawing.Size(169, 49);
@@ -208,7 +219,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label3.Location = new System.Drawing.Point(322, 107);
+            this.label3.Location = new System.Drawing.Point(322, 102);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(166, 23);
             this.label3.TabIndex = 12;
@@ -219,7 +230,7 @@
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label13.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label13.Location = new System.Drawing.Point(322, 32);
+            this.label13.Location = new System.Drawing.Point(322, 38);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(142, 23);
             this.label13.TabIndex = 2;
@@ -230,7 +241,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label1.Location = new System.Drawing.Point(1084, 102);
+            this.label1.Location = new System.Drawing.Point(1084, 105);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(101, 23);
             this.label1.TabIndex = 10;
@@ -238,17 +249,19 @@
             // 
             // txtOrderID
             // 
-            this.txtOrderID.Location = new System.Drawing.Point(179, 26);
+            this.txtOrderID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOrderID.Location = new System.Drawing.Point(170, 30);
             this.txtOrderID.Name = "txtOrderID";
             this.txtOrderID.ReadOnly = true;
-            this.txtOrderID.Size = new System.Drawing.Size(116, 39);
+            this.txtOrderID.Size = new System.Drawing.Size(116, 31);
             this.txtOrderID.TabIndex = 1;
             // 
             // txtPayMethod
             // 
-            this.txtPayMethod.Location = new System.Drawing.Point(538, 93);
+            this.txtPayMethod.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPayMethod.Location = new System.Drawing.Point(522, 99);
             this.txtPayMethod.Name = "txtPayMethod";
-            this.txtPayMethod.Size = new System.Drawing.Size(152, 39);
+            this.txtPayMethod.Size = new System.Drawing.Size(152, 31);
             this.txtPayMethod.TabIndex = 2;
             // 
             // label14
@@ -256,7 +269,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label14.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label14.Location = new System.Drawing.Point(706, 33);
+            this.label14.Location = new System.Drawing.Point(709, 38);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(151, 23);
             this.label14.TabIndex = 3;
@@ -449,15 +462,6 @@
             this.btnThem.Text = "Add";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // cboStatus
-            // 
-            this.cboStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(914, 94);
-            this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(154, 40);
-            this.cboStatus.TabIndex = 19;
             // 
             // FormOrders
             // 

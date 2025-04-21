@@ -71,6 +71,9 @@ namespace WFQuanLyCuaHang.Forms
 
         private void dgvNhanVien_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0 || e.RowIndex >= dgvNhanVien.Rows.Count)
+                return;
+
             // Cho thao tac tren cac nut Sua / Xoa
             this.btnSua.Enabled = true;
             this.btnXoa.Enabled = true;
@@ -81,7 +84,16 @@ namespace WFQuanLyCuaHang.Forms
             this.txtAddr.Text = dgvNhanVien.Rows[r].Cells[3].Value.ToString();
             this.txtPos.Text = dgvNhanVien.Rows[r].Cells[4].Value.ToString();
             this.txtSalary.Text = dgvNhanVien.Rows[r].Cells[5].Value.ToString();
-            this.txtHireDate.Text = Convert.ToDateTime(dgvNhanVien.Rows[r].Cells[6].Value).ToString("MM/dd/yyyy");
+            // Kiểm tra giá trị của ô HireDate trước khi chuyển đổi
+            var hireDateValue = dgvNhanVien.Rows[r].Cells[6].Value;
+            if (hireDateValue != null && DateTime.TryParse(hireDateValue.ToString(), out DateTime hireDate))
+            {
+                this.txtHireDate.Text = hireDate.ToString("MM/dd/yyyy");
+            }
+            else
+            {
+                this.txtHireDate.Text = ""; // Hoặc có thể hiển thị một thông báo lỗi
+            }
             this.txtStatus.Text = dgvNhanVien.Rows[r].Cells[7].Value.ToString();
         }
 

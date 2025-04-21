@@ -40,7 +40,11 @@
             this.txtTotalCost = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.dgvImport = new System.Windows.Forms.DataGridView();
-
+            this.ImportID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ImportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel6 = new System.Windows.Forms.Panel();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnUpdateStatus = new System.Windows.Forms.Button();
@@ -49,11 +53,6 @@
             this.btnHuy = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.ImportID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.EmployeeID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ImportDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TotalCost = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlOrder.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvImport)).BeginInit();
             this.panel6.SuspendLayout();
@@ -78,27 +77,27 @@
             // 
             // cboStatus
             // 
-            this.cboStatus.Font = new System.Drawing.Font("Cambria", 16.2F);
+            this.cboStatus.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboStatus.FormattingEnabled = true;
-            this.cboStatus.Location = new System.Drawing.Point(1090, 26);
+            this.cboStatus.Location = new System.Drawing.Point(1096, 33);
             this.cboStatus.Name = "cboStatus";
-            this.cboStatus.Size = new System.Drawing.Size(190, 40);
+            this.cboStatus.Size = new System.Drawing.Size(190, 31);
             this.cboStatus.TabIndex = 19;
             // 
             // txtImportDate
             // 
-            this.txtImportDate.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtImportDate.Location = new System.Drawing.Point(204, 97);
+            this.txtImportDate.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImportDate.Location = new System.Drawing.Point(210, 104);
             this.txtImportDate.Name = "txtImportDate";
-            this.txtImportDate.Size = new System.Drawing.Size(190, 39);
+            this.txtImportDate.Size = new System.Drawing.Size(190, 31);
             this.txtImportDate.TabIndex = 15;
             // 
             // txtEmployeeID
             // 
-            this.txtEmployeeID.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtEmployeeID.Location = new System.Drawing.Point(679, 27);
+            this.txtEmployeeID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEmployeeID.Location = new System.Drawing.Point(685, 34);
             this.txtEmployeeID.Name = "txtEmployeeID";
-            this.txtEmployeeID.Size = new System.Drawing.Size(190, 39);
+            this.txtEmployeeID.Size = new System.Drawing.Size(190, 31);
             this.txtEmployeeID.TabIndex = 14;
             // 
             // label12
@@ -128,7 +127,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.ForeColor = System.Drawing.Color.DarkSlateGray;
-            this.label2.Location = new System.Drawing.Point(951, 37);
+            this.label2.Location = new System.Drawing.Point(957, 37);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(114, 23);
             this.label2.TabIndex = 11;
@@ -147,19 +146,19 @@
             // 
             // txtImportID
             // 
-            this.txtImportID.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtImportID.Location = new System.Drawing.Point(204, 27);
+            this.txtImportID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtImportID.Location = new System.Drawing.Point(210, 34);
             this.txtImportID.Name = "txtImportID";
             this.txtImportID.ReadOnly = true;
-            this.txtImportID.Size = new System.Drawing.Size(190, 39);
+            this.txtImportID.Size = new System.Drawing.Size(190, 31);
             this.txtImportID.TabIndex = 1;
             // 
             // txtTotalCost
             // 
-            this.txtTotalCost.Font = new System.Drawing.Font("Cambria", 16.2F);
-            this.txtTotalCost.Location = new System.Drawing.Point(679, 96);
+            this.txtTotalCost.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTotalCost.Location = new System.Drawing.Point(685, 103);
             this.txtTotalCost.Name = "txtTotalCost";
-            this.txtTotalCost.Size = new System.Drawing.Size(190, 39);
+            this.txtTotalCost.Size = new System.Drawing.Size(190, 31);
             this.txtTotalCost.TabIndex = 2;
             // 
             // label14
@@ -191,6 +190,46 @@
             this.dgvImport.Size = new System.Drawing.Size(1430, 387);
             this.dgvImport.TabIndex = 16;
             this.dgvImport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvImport_CellClick);
+            // 
+            // ImportID
+            // 
+            this.ImportID.DataPropertyName = "ImportID";
+            this.ImportID.FillWeight = 100.495F;
+            this.ImportID.HeaderText = "ImportID";
+            this.ImportID.MinimumWidth = 6;
+            this.ImportID.Name = "ImportID";
+            // 
+            // EmployeeID
+            // 
+            this.EmployeeID.DataPropertyName = "EmployeeID";
+            this.EmployeeID.FillWeight = 98.47534F;
+            this.EmployeeID.HeaderText = "EmployeeID";
+            this.EmployeeID.MinimumWidth = 6;
+            this.EmployeeID.Name = "EmployeeID";
+            // 
+            // ImportDate
+            // 
+            this.ImportDate.DataPropertyName = "ImportDate";
+            this.ImportDate.FillWeight = 99.35232F;
+            this.ImportDate.HeaderText = "ImportDate";
+            this.ImportDate.MinimumWidth = 6;
+            this.ImportDate.Name = "ImportDate";
+            // 
+            // TotalCost
+            // 
+            this.TotalCost.DataPropertyName = "TotalCost";
+            this.TotalCost.FillWeight = 97.56368F;
+            this.TotalCost.HeaderText = "TotalCost";
+            this.TotalCost.MinimumWidth = 6;
+            this.TotalCost.Name = "TotalCost";
+            // 
+            // Status
+            // 
+            this.Status.DataPropertyName = "Status";
+            this.Status.FillWeight = 103.8599F;
+            this.Status.HeaderText = "Status";
+            this.Status.MinimumWidth = 6;
+            this.Status.Name = "Status";
             // 
             // panel6
             // 
@@ -295,46 +334,6 @@
             this.btnThem.Text = "Add";
             this.btnThem.UseVisualStyleBackColor = false;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // ImportID
-            // 
-            this.ImportID.DataPropertyName = "ImportID";
-            this.ImportID.FillWeight = 100.495F;
-            this.ImportID.HeaderText = "ImportID";
-            this.ImportID.MinimumWidth = 6;
-            this.ImportID.Name = "ImportID";
-            // 
-            // EmployeeID
-            // 
-            this.EmployeeID.DataPropertyName = "EmployeeID";
-            this.EmployeeID.FillWeight = 98.47534F;
-            this.EmployeeID.HeaderText = "EmployeeID";
-            this.EmployeeID.MinimumWidth = 6;
-            this.EmployeeID.Name = "EmployeeID";
-            // 
-            // ImportDate
-            // 
-            this.ImportDate.DataPropertyName = "ImportDate";
-            this.ImportDate.FillWeight = 99.35232F;
-            this.ImportDate.HeaderText = "ImportDate";
-            this.ImportDate.MinimumWidth = 6;
-            this.ImportDate.Name = "ImportDate";
-            // 
-            // TotalCost
-            // 
-            this.TotalCost.DataPropertyName = "TotalCost";
-            this.TotalCost.FillWeight = 97.56368F;
-            this.TotalCost.HeaderText = "TotalCost";
-            this.TotalCost.MinimumWidth = 6;
-            this.TotalCost.Name = "TotalCost";
-            // 
-            // Status
-            // 
-            this.Status.DataPropertyName = "Status";
-            this.Status.FillWeight = 103.8599F;
-            this.Status.HeaderText = "Status";
-            this.Status.MinimumWidth = 6;
-            this.Status.Name = "Status";
             // 
             // FormImport
             // 
