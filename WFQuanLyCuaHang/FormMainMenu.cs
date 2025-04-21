@@ -34,7 +34,16 @@ namespace WFQuanLyCuaHang
             lblDatetime.Text = DateTime.Now.ToString("HH:mm:ss - dd/MM/yyyy");
             timerTime.Tick += timerTime_Tick;
             timerTime.Start();
-
+            if(usertype == "Customer")
+            {
+                btnEmployees.Visible = false;
+                btnImport.Visible = false;
+                btnProducts.Visible = false;
+                btnOrders.Visible = false;
+                btnOrders.Visible = false;
+                btnWarranty.Visible = false;
+                btnOverview.Visible = false;
+            }
             this.username = username;
             this.usertype = usertype;
             leftBorderBtn = new Panel();

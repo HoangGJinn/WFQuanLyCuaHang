@@ -66,12 +66,12 @@
             // pnlMenu
             // 
             this.pnlMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(30)))), ((int)(((byte)(68)))));
+            this.pnlMenu.Controls.Add(this.btnCustomers);
             this.pnlMenu.Controls.Add(this.btnOverview);
+            this.pnlMenu.Controls.Add(this.btnEmployees);
             this.pnlMenu.Controls.Add(this.btnWarranty);
             this.pnlMenu.Controls.Add(this.btnAdmin);
             this.pnlMenu.Controls.Add(this.btnSignOut);
-            this.pnlMenu.Controls.Add(this.btnEmployees);
-            this.pnlMenu.Controls.Add(this.btnCustomers);
             this.pnlMenu.Controls.Add(this.btnOrders);
             this.pnlMenu.Controls.Add(this.btnProducts);
             this.pnlMenu.Controls.Add(this.btnImport);
@@ -141,7 +141,7 @@
             this.btnAdmin.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnAdmin.IconSize = 32;
             this.btnAdmin.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAdmin.Location = new System.Drawing.Point(0, 138);
+            this.btnAdmin.Location = new System.Drawing.Point(-2, 138);
             this.btnAdmin.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAdmin.Name = "btnAdmin";
             this.btnAdmin.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -186,7 +186,7 @@
             this.btnEmployees.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnEmployees.IconSize = 32;
             this.btnEmployees.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEmployees.Location = new System.Drawing.Point(0, 437);
+            this.btnEmployees.Location = new System.Drawing.Point(-2, 253);
             this.btnEmployees.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnEmployees.Name = "btnEmployees";
             this.btnEmployees.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -208,7 +208,7 @@
             this.btnCustomers.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnCustomers.IconSize = 32;
             this.btnCustomers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnCustomers.Location = new System.Drawing.Point(0, 378);
+            this.btnCustomers.Location = new System.Drawing.Point(0, 188);
             this.btnCustomers.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnCustomers.Name = "btnCustomers";
             this.btnCustomers.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -230,7 +230,7 @@
             this.btnOrders.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnOrders.IconSize = 32;
             this.btnOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnOrders.Location = new System.Drawing.Point(0, 320);
+            this.btnOrders.Location = new System.Drawing.Point(2, 437);
             this.btnOrders.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnOrders.Name = "btnOrders";
             this.btnOrders.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -252,7 +252,7 @@
             this.btnProducts.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnProducts.IconSize = 32;
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnProducts.Location = new System.Drawing.Point(0, 261);
+            this.btnProducts.Location = new System.Drawing.Point(2, 372);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnProducts.Name = "btnProducts";
             this.btnProducts.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
@@ -274,7 +274,7 @@
             this.btnImport.IconFont = FontAwesome.Sharp.IconFont.Auto;
             this.btnImport.IconSize = 32;
             this.btnImport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnImport.Location = new System.Drawing.Point(0, 202);
+            this.btnImport.Location = new System.Drawing.Point(-2, 318);
             this.btnImport.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnImport.Name = "btnImport";
             this.btnImport.Padding = new System.Windows.Forms.Padding(7, 0, 7, 0);
