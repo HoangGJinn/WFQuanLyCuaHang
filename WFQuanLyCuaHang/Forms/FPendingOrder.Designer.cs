@@ -71,7 +71,7 @@
             this.dgv_PendingOrder.Name = "dgv_PendingOrder";
             this.dgv_PendingOrder.RowHeadersWidth = 51;
             this.dgv_PendingOrder.RowTemplate.Height = 24;
-            this.dgv_PendingOrder.Size = new System.Drawing.Size(1562, 109);
+            this.dgv_PendingOrder.Size = new System.Drawing.Size(1562, 260);
             this.dgv_PendingOrder.TabIndex = 2;
             // 
             // OrderID

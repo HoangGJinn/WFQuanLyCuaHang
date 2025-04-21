@@ -33,6 +33,7 @@
             this.iconButton1 = new FontAwesome.Sharp.IconButton();
             this.btnPendingOrder = new FontAwesome.Sharp.IconButton();
             this.btnSoldProducts = new FontAwesome.Sharp.IconButton();
+            this.btnStatistic = new FontAwesome.Sharp.IconButton();
             this.SuspendLayout();
             // 
             // btnUnavailableWarranty
@@ -142,11 +143,35 @@
             this.btnSoldProducts.UseVisualStyleBackColor = true;
             this.btnSoldProducts.Click += new System.EventHandler(this.btnSoldProducts_Click);
             // 
+            // btnStatistic
+            // 
+            this.btnStatistic.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnStatistic.FlatAppearance.BorderSize = 0;
+            this.btnStatistic.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnStatistic.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStatistic.ForeColor = System.Drawing.Color.Black;
+            this.btnStatistic.IconChar = FontAwesome.Sharp.IconChar.HandHoldingUsd;
+            this.btnStatistic.IconColor = System.Drawing.Color.White;
+            this.btnStatistic.IconFont = FontAwesome.Sharp.IconFont.Auto;
+            this.btnStatistic.IconSize = 32;
+            this.btnStatistic.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnStatistic.Location = new System.Drawing.Point(0, 228);
+            this.btnStatistic.Margin = new System.Windows.Forms.Padding(2);
+            this.btnStatistic.Name = "btnStatistic";
+            this.btnStatistic.Padding = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.btnStatistic.Size = new System.Drawing.Size(1437, 57);
+            this.btnStatistic.TabIndex = 28;
+            this.btnStatistic.Text = "Doanh thu";
+            this.btnStatistic.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnStatistic.UseVisualStyleBackColor = true;
+            this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
+            // 
             // FOverview
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.Thistle;
             this.ClientSize = new System.Drawing.Size(1437, 607);
+            this.Controls.Add(this.btnStatistic);
             this.Controls.Add(this.btnUnavailableWarranty);
             this.Controls.Add(this.btnStockQuantity);
             this.Controls.Add(this.iconButton1);
@@ -166,5 +191,6 @@
         private FontAwesome.Sharp.IconButton iconButton1;
         private FontAwesome.Sharp.IconButton btnPendingOrder;
         private FontAwesome.Sharp.IconButton btnSoldProducts;
+        private FontAwesome.Sharp.IconButton btnStatistic;
     }
 }

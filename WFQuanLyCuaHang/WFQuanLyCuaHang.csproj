@@ -129,6 +129,12 @@
     <Compile Include="Forms\FormAddImport1.Designer.cs">
       <DependentUpon>FormAddImport1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\FormStatistics.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormStatistics.Designer.cs">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\FormWarranty.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -284,6 +290,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormAddImport1.resx">
       <DependentUpon>FormAddImport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormStatistics.resx">
+      <DependentUpon>FormStatistics.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormWarranty.resx">
       <DependentUpon>FormWarranty.cs</DependentUpon>
