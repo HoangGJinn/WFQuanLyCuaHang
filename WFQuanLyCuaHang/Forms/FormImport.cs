@@ -166,40 +166,31 @@ namespace WFQuanLyCuaHang.Forms
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            // Kiểm tra nếu đang ở chế độ cập nhật trạng thái (không phải thêm)
-            string Status = cboStatus.SelectedItem.ToString();
-            if (!Them)
+            if (!Them) // Kiểm tra nếu không phải thêm mới
             {
-                // Kiểm tra xem ô trạng thái có bị bỏ trống không
-                if (cboStatus.SelectedIndex < 0)
-                {
-                    MessageBox.Show("Vui lòng nhập trạng thái mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-
                 try
                 {
                     string err = "";
                     int importID = int.Parse(txtImportID.Text);
-                    string status = Status;
 
-                    bool f = dbi.UpdateImportStatus(ref err, importID, status);
-                    if (f)
+                    // Cập nhật trạng thái thành "Hoàn thành"
+                    bool statusUpdated = dbi.UpdateImportStatus(ref err, importID, "Hoàn thành");
+
+                    if (statusUpdated)
                     {
                         LoadData();
-                        MessageBox.Show("Đã cập nhật trạng thái thành công!");
+                        MessageBox.Show("Đã cập nhật trạng thái và tồn kho thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
-                        MessageBox.Show("Không thể cập nhật trạng thái!\n\rLỗi: " + err);
+                        MessageBox.Show("Không thể cập nhật trạng thái!\nLỗi: " + err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (SqlException)
+                catch (SqlException ex)
                 {
-                    MessageBox.Show("Lỗi khi cập nhật trạng thái. Vui lòng kiểm tra kết nối hoặc dữ liệu.");
+                    MessageBox.Show("Lỗi khi cập nhật. Vui lòng kiểm tra kết nối hoặc dữ liệu.\nLỗi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-
         }
 
         private void btnHuy_Click(object sender, EventArgs e)

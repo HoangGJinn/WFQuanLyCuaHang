@@ -14,7 +14,7 @@ namespace DataAccessLayer
         SqlCommand comm = null;
         SqlDataAdapter da = null;
 
-        private static string defaultConnStr = @"Data Source=.;Initial Catalog=LaptopStore2;Integrated Security=True";
+        private static string defaultConnStr = @"Data Source=LAPTOP-L65KCPF3\SQLEXPRESS;Initial Catalog=LaptopStore2;Integrated Security=True";
 
         public DAL()
         {

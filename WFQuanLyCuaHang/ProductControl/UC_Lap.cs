@@ -35,12 +35,12 @@ namespace WFQuanLyCuaHang.ProductControl
                 dgvLap.DataSource = dtProduct;
 
                 // Xóa trống các đối tượng trong Panel
-                this.txtIDLap.ResetText();
+                this.txtIDSupplier.ResetText();
                 this.txtTenLap.ResetText();
                 this.txtHangLap.ResetText();
                 this.txtGia.ResetText();
                 this.txtThoigianbaohanh.ResetText();
-                this.txtIDSupplier.ResetText();
+                this.txtIDLap.ResetText();
                 this.txtDescription.ResetText();
                 this.txtLoaiSP.ResetText();
 
@@ -95,8 +95,8 @@ namespace WFQuanLyCuaHang.ProductControl
             // Kiểm tra dữ liệu hợp lệ
             if (dgvLap.Rows[r].Cells[0].Value != null)
             {
-                txtIDLap.Text = dgvLap.Rows[r].Cells[0].Value?.ToString() ?? "";
-                txtIDSupplier.Text = dgvLap.Rows[r].Cells[1].Value?.ToString() ?? "";
+                txtIDSupplier.Text = dgvLap.Rows[r].Cells[0].Value?.ToString() ?? "";
+                txtIDLap.Text = dgvLap.Rows[r].Cells[1].Value?.ToString() ?? "";
                 txtTenLap.Text = dgvLap.Rows[r].Cells[2].Value?.ToString() ?? "";
                 txtLoaiSP.Text = dgvLap.Rows[r].Cells[3].Value?.ToString() ?? "";
                 txtHangLap.Text = dgvLap.Rows[r].Cells[4].Value?.ToString() ?? "";
@@ -114,12 +114,12 @@ namespace WFQuanLyCuaHang.ProductControl
         private void btnHuyBo_Click(object sender, EventArgs e)
         {
             // Xóa trống các đối tượng trong Panel
-            this.txtIDLap.ResetText();
+            this.txtIDSupplier.ResetText();
             this.txtTenLap.ResetText();
             this.txtHangLap.ResetText();
             this.txtGia.ResetText();
             this.txtThoigianbaohanh.ResetText();
-            this.txtIDSupplier.ResetText();
+            this.txtIDLap.ResetText();
             this.txtDescription.ResetText();
             this.txtLoaiSP.ResetText();
 
@@ -140,12 +140,12 @@ namespace WFQuanLyCuaHang.ProductControl
             // Kích hoạt biến Them
             Them = true;
             // Xóa trống các đối tượng trong Panel
-            this.txtIDLap.ResetText();
+            this.txtIDSupplier.ResetText();
             this.txtTenLap.ResetText();
             this.txtHangLap.ResetText();
             this.txtGia.ResetText();
             this.txtThoigianbaohanh.ResetText();
-            this.txtIDSupplier.ResetText();
+            this.txtIDLap.ResetText();
             this.txtDescription.ResetText();
             this.txtLoaiSP.ResetText();
             this.txtThoigianbaohanh.ResetText();
@@ -236,7 +236,7 @@ namespace WFQuanLyCuaHang.ProductControl
             err = ""; // Mặc định không có lỗi
 
             // Kiểm tra SupplierID (phải là số nguyên dương)
-            if (!int.TryParse(txtIDSupplier.Text.Trim(), out int supplierID) || supplierID <= 0)
+            if (!int.TryParse(txtIDLap.Text.Trim(), out int supplierID) || supplierID <= 0)
             {
                 err = "Mã nhà cung cấp phải là số nguyên dương!";
                 return false;
@@ -298,7 +298,7 @@ namespace WFQuanLyCuaHang.ProductControl
             }
 
             // Ép kiểu các giá trị cần thiết
-            int supplierID = int.Parse(txtIDSupplier.Text.Trim());
+            int supplierID = int.Parse(txtIDLap.Text.Trim());
             decimal price = decimal.Parse(txtGia.Text.Trim());
             int warranty = int.Parse(txtThoigianbaohanh.Text.Trim());
 
@@ -327,7 +327,7 @@ namespace WFQuanLyCuaHang.ProductControl
             {
                 try
                 {
-                    int productID = int.Parse(txtIDLap.Text.Trim()); // Ép kiểu ProductID
+                    int productID = int.Parse(txtIDSupplier.Text.Trim()); // Ép kiểu ProductID
 
                     bool result = dbp.UpdateProduct(ref err, supplierID, productID, txtTenLap.Text, txtLoaiSP.Text,
                                                           txtHangLap.Text, price, warranty, txtDescription.Text);

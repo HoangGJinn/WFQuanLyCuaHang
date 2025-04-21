@@ -52,10 +52,10 @@
             this.txtThoigianbaohanh = new System.Windows.Forms.TextBox();
             this.txtLoaiSP = new System.Windows.Forms.TextBox();
             this.txtGia = new System.Windows.Forms.TextBox();
-            this.txtIDSupplier = new System.Windows.Forms.TextBox();
+            this.txtIDLap = new System.Windows.Forms.TextBox();
             this.txtHangLap = new System.Windows.Forms.TextBox();
             this.txtTenLap = new System.Windows.Forms.TextBox();
-            this.txtIDLap = new System.Windows.Forms.TextBox();
+            this.txtIDSupplier = new System.Windows.Forms.TextBox();
             this.dgvLap = new System.Windows.Forms.DataGridView();
             this.ProductID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.SupplierID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -79,7 +79,7 @@
             this.label1.Location = new System.Drawing.Point(472, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(218, 26);
+            this.label1.Size = new System.Drawing.Size(273, 33);
             this.label1.TabIndex = 25;
             this.label1.Text = "DANH SÁCH LAPTOP\r\n";
             this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -176,7 +176,7 @@
             this.label__hangdienthoai_dienthoai.Location = new System.Drawing.Point(10, 47);
             this.label__hangdienthoai_dienthoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label__hangdienthoai_dienthoai.Name = "label__hangdienthoai_dienthoai";
-            this.label__hangdienthoai_dienthoai.Size = new System.Drawing.Size(80, 19);
+            this.label__hangdienthoai_dienthoai.Size = new System.Drawing.Size(95, 23);
             this.label__hangdienthoai_dienthoai.TabIndex = 1;
             this.label__hangdienthoai_dienthoai.Text = "Hãng Lap";
             // 
@@ -188,7 +188,7 @@
             this.label_madienthoai_dienthoai.Location = new System.Drawing.Point(10, 72);
             this.label_madienthoai_dienthoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_madienthoai_dienthoai.Name = "label_madienthoai_dienthoai";
-            this.label_madienthoai_dienthoai.Size = new System.Drawing.Size(103, 19);
+            this.label_madienthoai_dienthoai.Size = new System.Drawing.Size(124, 23);
             this.label_madienthoai_dienthoai.TabIndex = 8;
             this.label_madienthoai_dienthoai.Text = "ID sản phẩm";
             this.label_madienthoai_dienthoai.Click += new System.EventHandler(this.label_madienthoai_dienthoai_Click);
@@ -201,7 +201,7 @@
             this.label_tendienthoai_dienthoai.Location = new System.Drawing.Point(10, 9);
             this.label_tendienthoai_dienthoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_tendienthoai_dienthoai.Name = "label_tendienthoai_dienthoai";
-            this.label_tendienthoai_dienthoai.Size = new System.Drawing.Size(93, 19);
+            this.label_tendienthoai_dienthoai.Size = new System.Drawing.Size(113, 23);
             this.label_tendienthoai_dienthoai.TabIndex = 9;
             this.label_tendienthoai_dienthoai.Text = "Tên Laptop";
             // 
@@ -213,7 +213,7 @@
             this.label_soluong_dienthoai.Location = new System.Drawing.Point(480, 84);
             this.label_soluong_dienthoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_soluong_dienthoai.Name = "label_soluong_dienthoai";
-            this.label_soluong_dienthoai.Size = new System.Drawing.Size(155, 19);
+            this.label_soluong_dienthoai.Size = new System.Drawing.Size(187, 23);
             this.label_soluong_dienthoai.TabIndex = 10;
             this.label_soluong_dienthoai.Text = "Thời gian bảo hành";
             this.label_soluong_dienthoai.Click += new System.EventHandler(this.label_soluong_dienthoai_Click);
@@ -226,7 +226,7 @@
             this.label_giaban_dienthoai.Location = new System.Drawing.Point(480, 10);
             this.label_giaban_dienthoai.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label_giaban_dienthoai.Name = "label_giaban_dienthoai";
-            this.label_giaban_dienthoai.Size = new System.Drawing.Size(65, 19);
+            this.label_giaban_dienthoai.Size = new System.Drawing.Size(79, 23);
             this.label_giaban_dienthoai.TabIndex = 12;
             this.label_giaban_dienthoai.Text = "Giá bán";
             // 
@@ -238,7 +238,7 @@
             this.lb_them_DT.Location = new System.Drawing.Point(10, 299);
             this.lb_them_DT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_them_DT.Name = "lb_them_DT";
-            this.lb_them_DT.Size = new System.Drawing.Size(0, 19);
+            this.lb_them_DT.Size = new System.Drawing.Size(0, 22);
             this.lb_them_DT.TabIndex = 24;
             // 
             // lbNhaCungCap
@@ -249,7 +249,7 @@
             this.lbNhaCungCap.Location = new System.Drawing.Point(7, 116);
             this.lbNhaCungCap.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbNhaCungCap.Name = "lbNhaCungCap";
-            this.lbNhaCungCap.Size = new System.Drawing.Size(131, 19);
+            this.lbNhaCungCap.Size = new System.Drawing.Size(155, 23);
             this.lbNhaCungCap.TabIndex = 26;
             this.lbNhaCungCap.Text = "ID Nhà cung cấp";
             this.lbNhaCungCap.Click += new System.EventHandler(this.label2_Click);
@@ -262,7 +262,7 @@
             this.lbLoaiSP.Location = new System.Drawing.Point(480, 46);
             this.lbLoaiSP.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbLoaiSP.Name = "lbLoaiSP";
-            this.lbLoaiSP.Size = new System.Drawing.Size(118, 19);
+            this.lbLoaiSP.Size = new System.Drawing.Size(142, 23);
             this.lbLoaiSP.TabIndex = 28;
             this.lbLoaiSP.Text = "Loại sản phẩm";
             // 
@@ -274,7 +274,7 @@
             this.lbDescription.Location = new System.Drawing.Point(480, 121);
             this.lbDescription.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lbDescription.Name = "lbDescription";
-            this.lbDescription.Size = new System.Drawing.Size(51, 19);
+            this.lbDescription.Size = new System.Drawing.Size(60, 23);
             this.lbDescription.TabIndex = 30;
             this.lbDescription.Text = "Mô tả";
             // 
@@ -286,10 +286,10 @@
             this.pnListLap.Controls.Add(this.txtThoigianbaohanh);
             this.pnListLap.Controls.Add(this.txtLoaiSP);
             this.pnListLap.Controls.Add(this.txtGia);
-            this.pnListLap.Controls.Add(this.txtIDSupplier);
+            this.pnListLap.Controls.Add(this.txtIDLap);
             this.pnListLap.Controls.Add(this.txtHangLap);
             this.pnListLap.Controls.Add(this.txtTenLap);
-            this.pnListLap.Controls.Add(this.txtIDLap);
+            this.pnListLap.Controls.Add(this.txtIDSupplier);
             this.pnListLap.Controls.Add(this.lbDescription);
             this.pnListLap.Controls.Add(this.lbLoaiSP);
             this.pnListLap.Controls.Add(this.lbNhaCungCap);
@@ -321,58 +321,58 @@
             // 
             this.txtDescription.Location = new System.Drawing.Point(729, 123);
             this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(136, 20);
+            this.txtDescription.Size = new System.Drawing.Size(136, 22);
             this.txtDescription.TabIndex = 38;
             // 
             // txtThoigianbaohanh
             // 
             this.txtThoigianbaohanh.Location = new System.Drawing.Point(729, 84);
             this.txtThoigianbaohanh.Name = "txtThoigianbaohanh";
-            this.txtThoigianbaohanh.Size = new System.Drawing.Size(136, 20);
+            this.txtThoigianbaohanh.Size = new System.Drawing.Size(136, 22);
             this.txtThoigianbaohanh.TabIndex = 37;
             // 
             // txtLoaiSP
             // 
             this.txtLoaiSP.Location = new System.Drawing.Point(729, 44);
             this.txtLoaiSP.Name = "txtLoaiSP";
-            this.txtLoaiSP.Size = new System.Drawing.Size(136, 20);
+            this.txtLoaiSP.Size = new System.Drawing.Size(136, 22);
             this.txtLoaiSP.TabIndex = 36;
             // 
             // txtGia
             // 
             this.txtGia.Location = new System.Drawing.Point(729, 6);
             this.txtGia.Name = "txtGia";
-            this.txtGia.Size = new System.Drawing.Size(136, 20);
+            this.txtGia.Size = new System.Drawing.Size(136, 22);
             this.txtGia.TabIndex = 35;
             // 
-            // txtIDSupplier
+            // txtIDLap
             // 
-            this.txtIDSupplier.Location = new System.Drawing.Point(187, 116);
-            this.txtIDSupplier.Name = "txtIDSupplier";
-            this.txtIDSupplier.Size = new System.Drawing.Size(136, 20);
-            this.txtIDSupplier.TabIndex = 34;
+            this.txtIDLap.Location = new System.Drawing.Point(187, 73);
+            this.txtIDLap.Name = "txtIDLap";
+            this.txtIDLap.Size = new System.Drawing.Size(136, 22);
+            this.txtIDLap.TabIndex = 34;
             // 
             // txtHangLap
             // 
             this.txtHangLap.Location = new System.Drawing.Point(187, 42);
             this.txtHangLap.Name = "txtHangLap";
-            this.txtHangLap.Size = new System.Drawing.Size(136, 20);
+            this.txtHangLap.Size = new System.Drawing.Size(136, 22);
             this.txtHangLap.TabIndex = 33;
             // 
             // txtTenLap
             // 
             this.txtTenLap.Location = new System.Drawing.Point(187, 10);
             this.txtTenLap.Name = "txtTenLap";
-            this.txtTenLap.Size = new System.Drawing.Size(136, 20);
+            this.txtTenLap.Size = new System.Drawing.Size(136, 22);
             this.txtTenLap.TabIndex = 32;
             this.txtTenLap.TextChanged += new System.EventHandler(this.textBox1_TextChanged_1);
             // 
-            // txtIDLap
+            // txtIDSupplier
             // 
-            this.txtIDLap.Location = new System.Drawing.Point(187, 74);
-            this.txtIDLap.Name = "txtIDLap";
-            this.txtIDLap.Size = new System.Drawing.Size(136, 20);
-            this.txtIDLap.TabIndex = 31;
+            this.txtIDSupplier.Location = new System.Drawing.Point(187, 117);
+            this.txtIDSupplier.Name = "txtIDSupplier";
+            this.txtIDSupplier.Size = new System.Drawing.Size(136, 22);
+            this.txtIDSupplier.TabIndex = 31;
             // 
             // dgvLap
             // 
@@ -510,11 +510,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn WarrantyPeriod;
         private System.Windows.Forms.DataGridViewTextBoxColumn Description;
-        private System.Windows.Forms.TextBox txtIDLap;
+        private System.Windows.Forms.TextBox txtIDSupplier;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.TextBox txtTenLap;
         private System.Windows.Forms.TextBox txtHangLap;
-        private System.Windows.Forms.TextBox txtIDSupplier;
+        private System.Windows.Forms.TextBox txtIDLap;
         private System.Windows.Forms.TextBox txtLoaiSP;
         private System.Windows.Forms.TextBox txtGia;
         private System.Windows.Forms.TextBox txtThoigianbaohanh;
