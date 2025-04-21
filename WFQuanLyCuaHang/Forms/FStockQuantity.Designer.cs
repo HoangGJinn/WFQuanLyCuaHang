@@ -62,7 +62,7 @@
             this.dtGridView_StockQuantity.Name = "dtGridView_StockQuantity";
             this.dtGridView_StockQuantity.RowHeadersWidth = 51;
             this.dtGridView_StockQuantity.RowTemplate.Height = 24;
-            this.dtGridView_StockQuantity.Size = new System.Drawing.Size(1424, 91);
+            this.dtGridView_StockQuantity.Size = new System.Drawing.Size(1424, 300);
             this.dtGridView_StockQuantity.TabIndex = 2;
             // 
             // ProductID
@@ -92,6 +92,7 @@
             this.Controls.Add(this.dtGridView_StockQuantity);
             this.Name = "FStockQuantity";
             this.Text = "FStockQuantity";
+            this.Load += new System.EventHandler(this.FStockQuantity_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtGridView_StockQuantity)).EndInit();
             this.ResumeLayout(false);
 
