@@ -46,13 +46,14 @@
             this.ProductName,
             this.TotalSold});
             this.dgv_SoldProductsToday.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgv_SoldProductsToday.Location = new System.Drawing.Point(1, -1);
+            this.dgv_SoldProductsToday.Location = new System.Drawing.Point(-2, -1);
             this.dgv_SoldProductsToday.Margin = new System.Windows.Forms.Padding(2);
             this.dgv_SoldProductsToday.Name = "dgv_SoldProductsToday";
             this.dgv_SoldProductsToday.RowHeadersWidth = 51;
             this.dgv_SoldProductsToday.RowTemplate.Height = 24;
-            this.dgv_SoldProductsToday.Size = new System.Drawing.Size(1425, 83);
+            this.dgv_SoldProductsToday.Size = new System.Drawing.Size(1438, 246);
             this.dgv_SoldProductsToday.TabIndex = 3;
+            this.dgv_SoldProductsToday.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_SoldProductsToday_CellContentClick);
             // 
             // ProductID
             // 
@@ -78,7 +79,7 @@
             // btnSoldProducts
             // 
             this.btnSoldProducts.ForeColor = System.Drawing.Color.Black;
-            this.btnSoldProducts.Location = new System.Drawing.Point(680, 525);
+            this.btnSoldProducts.Location = new System.Drawing.Point(631, 537);
             this.btnSoldProducts.Margin = new System.Windows.Forms.Padding(2);
             this.btnSoldProducts.Name = "btnSoldProducts";
             this.btnSoldProducts.Size = new System.Drawing.Size(144, 59);

@@ -118,7 +118,7 @@ namespace WFQuanLyCuaHang
             }
 
             // Tạo chuỗi kết nối và lưu vào SessionContext
-            string connStr = $"Data Source=LAPTOP-L65KCPF3\\SQLEXPRESS;Initial Catalog=LaptopStore2;User ID={username};Password={password};";
+            string connStr = $"Data Source=.;Initial Catalog=LaptopStore2;User ID={username};Password={password};";
 
             // Lưu vào SessionContext
             SessionContext.CurrentUsername = username;

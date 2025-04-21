@@ -5,7 +5,7 @@ namespace DataAccessLayer
     public static class DALManager
     {
         private static DAL _instance;
-        private static string _defaultConnectionString = @"Data Source=LAPTOP-L65KCPF3\SQLEXPRESS;Initial Catalog=LaptopStore2;Integrated Security=True";
+        private static string _defaultConnectionString = @"Data Source=.;Initial Catalog=LaptopStore2;Integrated Security=True";
 
         // Kiểm tra xem DAL đã được khởi tạo chưa
         public static bool IsInitialized => _instance != null;
