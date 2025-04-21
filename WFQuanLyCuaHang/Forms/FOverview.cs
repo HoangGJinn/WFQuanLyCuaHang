@@ -139,5 +139,11 @@ namespace WFQuanLyCuaHang.Forms
             ActivateButton(sender, RGBColors.color5);
             OpenChildForm(new FAvailableWarranty());
         }
+
+        private void btnStatistic_Click(object sender, EventArgs e)
+        {
+            ActivateButton(sender, RGBColors.color5);
+            OpenChildForm(new FormStatistics());
+        }
     }
 }

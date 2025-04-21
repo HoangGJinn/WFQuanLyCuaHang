@@ -1166,6 +1166,44 @@ BEGIN
 END;
 GO
 
+--Cập nhật trạng thái phiếu nhập
+CREATE PROCEDURE spUpdateImportStatus
+    @ImportID INT,
+    @Status NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật trạng thái phiếu nhập
+    UPDATE Import
+    SET Status = @Status
+    WHERE ImportID = @ImportID;
+END
+GO
+
+--Cập nhật stock khi trạng thái đơn hàng là hoàn thành
+CREATE PROCEDURE spUpdateStockFromImport
+    @ImportID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật tồn kho dựa trên ImportID
+    MERGE Stock AS target
+    USING (
+        SELECT ProductID, Quantity
+        FROM ImportDetail
+        WHERE ImportID = @ImportID
+    ) AS source
+    ON target.ProductID = source.ProductID
+    WHEN MATCHED THEN
+        UPDATE SET Quantity = target.Quantity + source.Quantity
+    WHEN NOT MATCHED THEN
+        INSERT (ProductID, Quantity)
+        VALUES (source.ProductID, source.Quantity);
+END
+GO
+
 -- ======================================================
 -----------------/* USER VA PHAN QUYEN*/----------------
 -- ======================================================
