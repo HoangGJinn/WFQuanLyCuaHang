@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -19,6 +20,7 @@ namespace WFQuanLyCuaHang.Forms
         public string username;
         public string usertype;
         private DBProduct dbp;
+        private DAL db;
         //List cart
         List<CartItem> cart = new List<CartItem>();
 
@@ -30,6 +32,7 @@ namespace WFQuanLyCuaHang.Forms
             dbp = new DBProduct();
             this.username = username;
             this.usertype = usertype;
+            db = DALManager.Instance;
             txtProductName.Text = "Hãy chọn sản phẩm!";
             if(usertype == "Customer")
             {
@@ -217,6 +220,14 @@ namespace WFQuanLyCuaHang.Forms
                 return;
             }
 
+            // Kiểm tra tồn kho trước khi đặt
+            List<string> outOfStock = CheckOutOfStockProducts();
+            if (outOfStock.Count > 0)
+            {
+                string message = "Một số sản phẩm không đủ hàng tồn kho:\n" + string.Join("\n", outOfStock);
+                MessageBox.Show(message, "Thiếu hàng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
 
             decimal totalAmount = cart.Sum(item => item.TotalPrice());
             var formCreateOrder = new FCreateOrder(cart, username, usertype, totalAmount);
@@ -300,5 +311,40 @@ namespace WFQuanLyCuaHang.Forms
         {
 
         }
+
+        private List<string> CheckOutOfStockProducts()
+        {
+            List<string> outOfStockMessages = new List<string>();
+
+            foreach (var item in cart)
+            {
+                string query = @"
+            SELECT p.ProductName, s.Quantity AS AvailableQuantity
+            FROM Product p
+            JOIN Stock s ON p.ProductID = s.ProductID
+            WHERE p.ProductID = @ProductID";
+
+                SqlParameter[] parameters = { new SqlParameter("@ProductID", item.ProductID) };
+
+                DataTable dt = db.ExecuteQueryDataTable(query, CommandType.Text, parameters);
+
+                if (dt != null && dt.Rows.Count > 0)
+                {
+                    int available = Convert.ToInt32(dt.Rows[0]["AvailableQuantity"]);
+                    string name = dt.Rows[0]["ProductName"].ToString();
+                    if (available < item.Quantity)
+                    {
+                        outOfStockMessages.Add($"- {name}: Còn {available}, yêu cầu {item.Quantity}");
+                    }
+                }
+                else
+                {
+                    outOfStockMessages.Add($"- ID {item.ProductID}: Không tìm thấy sản phẩm trong hệ thống hoặc không có tồn kho");
+                }
+            }
+
+            return outOfStockMessages;
+        }
+
     }
 }

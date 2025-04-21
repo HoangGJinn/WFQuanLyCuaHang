@@ -22,14 +22,22 @@ namespace WFQuanLyCuaHang.Forms
 
         private void FSoldProducts_Load(object sender, EventArgs e)
         {
+            // Load data when the form loads
             LoadData();
         }
 
         private void LoadData()
         {
+            
             DataTable dt = dbp.GetSoldProductsToday();
             // Load data from database into DataGridView
             dgv_SoldProductsToday.DataSource = dt;
+
+        }
+
+
+        private void dgv_SoldProductsToday_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

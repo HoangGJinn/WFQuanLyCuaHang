@@ -1,8 +1,10 @@
 ﻿using BusinessLogicLayer;
+using DataAccessLayer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -17,6 +19,7 @@ namespace WFQuanLyCuaHang.Forms
         DBAccount dba;
         DBCustomer dbc;
         DBOrder dbo;
+        private DAL db;
         List<CartItem> cart;
         string username;
         string usertype;
@@ -31,9 +34,11 @@ namespace WFQuanLyCuaHang.Forms
             this.username = username;
             this.usertype = usertype;
             this.totalAmount = totalAmount;
+
             dbo = new DBOrder();
             dba = new DBAccount();
             dbc = new DBCustomer();
+            db = DALManager.Instance; // sử dụng DAL singleton
 
             lbTotalAmount.Text = "Tổng tiền: " + totalAmount.ToString("N0") + "đ";
         }
@@ -131,6 +136,7 @@ namespace WFQuanLyCuaHang.Forms
             if (result)
             {
                 MessageBox.Show($"Đặt hàng thành công! Mã đơn hàng: {newOrderID}", "Thành công", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                UpdateProductQuantitiesAfterOrder();
                 OrderPlacedSuccessfully = true;
                 this.Close();
             }
@@ -168,5 +174,29 @@ namespace WFQuanLyCuaHang.Forms
         {
 
         }
+
+        private void UpdateProductQuantitiesAfterOrder()
+        {
+            foreach (var item in cart)
+            {
+                string query = @"UPDATE Stock 
+                         SET Quantity = Quantity - @Quantity 
+                         WHERE ProductID = @ProductID";
+
+                SqlParameter[] parameters =
+                {
+            new SqlParameter("@ProductID", item.ProductID),
+            new SqlParameter("@Quantity", item.Quantity)
+        };
+
+                string err = "";
+                bool success = db.MyExecuteNonQuery(query, CommandType.Text, ref err, parameters);
+                if (!success)
+                {
+                    MessageBox.Show($"Không thể cập nhật số lượng tồn kho cho sản phẩm ID {item.ProductID}: {err}", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+        }
+
     }
 }

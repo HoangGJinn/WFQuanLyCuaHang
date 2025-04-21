@@ -69,7 +69,7 @@
             this.label13.Location = new System.Drawing.Point(579, 114);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(62, 19);
+            this.label13.Size = new System.Drawing.Size(74, 23);
             this.label13.TabIndex = 2;
             this.label13.Text = "Địa Chỉ";
             // 
@@ -81,7 +81,7 @@
             this.label10.Location = new System.Drawing.Point(499, 0);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(274, 26);
+            this.label10.Size = new System.Drawing.Size(343, 33);
             this.label10.TabIndex = 0;
             this.label10.Text = "DANH SÁCH KHÁCH HÀNG";
             // 
@@ -142,7 +142,7 @@
             this.panel6.Controls.Add(this.btnHuy);
             this.panel6.Controls.Add(this.btnThem);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(2, 534);
+            this.panel6.Location = new System.Drawing.Point(2, 530);
             this.panel6.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(1449, 96);
@@ -235,9 +235,9 @@
             // btnFindKH
             // 
             this.btnFindKH.Font = new System.Drawing.Font("Cambria", 12F);
-            this.btnFindKH.Location = new System.Drawing.Point(419, 97);
+            this.btnFindKH.Location = new System.Drawing.Point(414, 96);
             this.btnFindKH.Name = "btnFindKH";
-            this.btnFindKH.Size = new System.Drawing.Size(128, 41);
+            this.btnFindKH.Size = new System.Drawing.Size(117, 31);
             this.btnFindKH.TabIndex = 31;
             this.btnFindKH.Text = "Tìm khách hàng";
             this.btnFindKH.UseVisualStyleBackColor = true;
@@ -250,20 +250,22 @@
             this.lb_them_KH.Location = new System.Drawing.Point(12, 234);
             this.lb_them_KH.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lb_them_KH.Name = "lb_them_KH";
-            this.lb_them_KH.Size = new System.Drawing.Size(0, 19);
+            this.lb_them_KH.Size = new System.Drawing.Size(0, 22);
             this.lb_them_KH.TabIndex = 9;
             // 
             // txtFullName
             // 
-            this.txtFullName.Location = new System.Drawing.Point(232, 97);
+            this.txtFullName.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtFullName.Location = new System.Drawing.Point(222, 98);
             this.txtFullName.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtFullName.Name = "txtFullName";
-            this.txtFullName.Size = new System.Drawing.Size(173, 33);
+            this.txtFullName.Size = new System.Drawing.Size(173, 31);
             this.txtFullName.TabIndex = 2;
             // 
             // txtAddr
             // 
-            this.txtAddr.Location = new System.Drawing.Point(743, 110);
+            this.txtAddr.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtAddr.Location = new System.Drawing.Point(733, 92);
             this.txtAddr.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtAddr.Multiline = true;
             this.txtAddr.Name = "txtAddr";
@@ -272,10 +274,11 @@
             // 
             // txtCustomerID
             // 
-            this.txtCustomerID.Location = new System.Drawing.Point(232, 42);
+            this.txtCustomerID.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtCustomerID.Location = new System.Drawing.Point(222, 43);
             this.txtCustomerID.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtCustomerID.Name = "txtCustomerID";
-            this.txtCustomerID.Size = new System.Drawing.Size(173, 33);
+            this.txtCustomerID.Size = new System.Drawing.Size(173, 31);
             this.txtCustomerID.TabIndex = 1;
             // 
             // label15
@@ -286,7 +289,7 @@
             this.label15.Location = new System.Drawing.Point(41, 104);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(131, 19);
+            this.label15.Size = new System.Drawing.Size(158, 23);
             this.label15.TabIndex = 4;
             this.label15.Text = "Tên Khách Hàng";
             // 
@@ -298,7 +301,7 @@
             this.label14.Location = new System.Drawing.Point(575, 52);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(111, 19);
+            this.label14.Size = new System.Drawing.Size(135, 23);
             this.label14.TabIndex = 3;
             this.label14.Text = "Số Điện Thoại";
             this.label14.Click += new System.EventHandler(this.label14_Click);
@@ -326,11 +329,12 @@
             // 
             // txtPhone
             // 
-            this.txtPhone.Location = new System.Drawing.Point(743, 48);
+            this.txtPhone.Font = new System.Drawing.Font("Cambria", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.txtPhone.Location = new System.Drawing.Point(733, 49);
             this.txtPhone.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.txtPhone.Mask = "999 000 0000";
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(173, 33);
+            this.txtPhone.Size = new System.Drawing.Size(173, 31);
             this.txtPhone.TabIndex = 3;
             this.txtPhone.TextMaskFormat = System.Windows.Forms.MaskFormat.ExcludePromptAndLiterals;
             // 
@@ -342,7 +346,7 @@
             this.label12.Location = new System.Drawing.Point(41, 48);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(127, 19);
+            this.label12.Size = new System.Drawing.Size(151, 23);
             this.label12.TabIndex = 1;
             this.label12.Text = "Mã Khách Hàng";
             // 
@@ -353,11 +357,11 @@
             this.tabPage_khachhang.Controls.Add(this.panel6);
             this.tabPage_khachhang.Controls.Add(this.pnlCustomer);
             this.tabPage_khachhang.Font = new System.Drawing.Font("Cambria", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.tabPage_khachhang.Location = new System.Drawing.Point(4, 28);
+            this.tabPage_khachhang.Location = new System.Drawing.Point(4, 32);
             this.tabPage_khachhang.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.tabPage_khachhang.Name = "tabPage_khachhang";
             this.tabPage_khachhang.Padding = new System.Windows.Forms.Padding(2, 1, 2, 1);
-            this.tabPage_khachhang.Size = new System.Drawing.Size(1453, 631);
+            this.tabPage_khachhang.Size = new System.Drawing.Size(1453, 627);
             this.tabPage_khachhang.TabIndex = 2;
             this.tabPage_khachhang.Text = "CUSTOMER";
             // 
