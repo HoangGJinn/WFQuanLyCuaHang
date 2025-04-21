@@ -1,9 +1,8 @@
-﻿
--- Tạo cơ sở dữ liệu
-CREATE DATABASE LaptopStore3;
+﻿-- Tạo cơ sở dữ liệu
+CREATE DATABASE LaptopStore2;
 GO
 
-USE LaptopStore3;
+USE LaptopStore2;
 GO
 
 
@@ -127,7 +126,7 @@ CREATE TABLE Import (
 CREATE TABLE ImportDetail (
     ImportID INT NOT NULL,
     ProductID INT NOT NULL,
-	SupplierID INT NOT NULL,
+    SupplierID INT NOT NULL,
 
     Quantity INT CHECK (Quantity > 0),
     Price DECIMAL(18,2) CHECK (Price >= 0),
@@ -170,18 +169,58 @@ INSERT INTO Supplier (SpName, Contact, Address) VALUES
 (N'Trung Tâm Laptop', '0977345678', N'Thanh Hóa');
 GO
 
--- Bổ sung thêm dữ liệu cho bảng Product
-INSERT INTO Product (SupplierID, ProductName, Category, Brand, Price, WarrantyPeriod, Description) VALUES
-(1, N'Laptop ASUS ROG Zephyrus G14', N'Laptop', N'ASUS', 42000000, 36, N'Laptop gaming ASUS ROG Zephyrus G14, Ryzen 9, RTX 4060'),
-(2, N'Bàn phím cơ Akko 3068B', N'Bàn phím', N'Akko', 2000000, 12, N'Bàn phím cơ không dây Akko 3068B, Red Switch'),
-(3, N'Chuột Razer DeathAdder V2', N'Chuột', N'Razer', 1800000, 24, N'Chuột gaming Razer DeathAdder V2, cảm biến 20K DPI');
-GO
-
 /***** Thêm dữ liệu mẫu cho Stock *****/
 INSERT INTO Stock (ProductID, Quantity) VALUES
-(1, 12),
-(2, 20),
-(3, 25);
+(1, 15),
+(2, 12),
+(3, 18),
+(4, 10),
+(5, 20),
+(6, 17),
+(7, 14),
+(8, 19),
+(9, 11),
+(10, 13),
+(11, 16),
+(12, 12),
+(13, 20),
+(14, 15),
+(15, 17),
+(16, 14),
+(17, 13),
+(18, 19),
+(19, 11),
+(20, 10),
+(21, 16),
+(22, 18),
+(23, 17),
+(24, 15),
+(25, 13),
+(26, 11),
+(27, 20),
+(28, 12),
+(29, 18),
+(30, 14),
+(31, 10),
+(32, 19),
+(33, 15),
+(34, 17),
+(35, 13),
+(36, 20),
+(37, 16),
+(38, 11),
+(39, 12),
+(40, 14),
+(41, 18),
+(42, 15),
+(43, 19),
+(44, 13),
+(45, 17),
+(46, 12),
+(47, 16),
+(48, 11),
+(49, 10),
+(50, 20);
 GO
 
 /***** Thêm dữ liệu mẫu cho Order *****/
@@ -197,17 +236,12 @@ INSERT INTO OrderDetails(OrderID, ProductID, Quantity, Price) VALUES
 (2, 2, 1, 2000000);
 GO
 
-/***** Thêm dữ liệu mẫu cho Import *****/
-INSERT INTO Import ( EmployeeID, ImportDate, TotalCost, Status) VALUES
-( 2, '2025-03-01', 50000000, N'Hoàn thành'),
-( 3, '2025-03-05', 42000000, N'Hoàn thành');
-GO
-
 /***** Thêm dữ liệu mẫu cho Warranty *****/
 INSERT INTO Warranty (ProductID, CustomerID, StartDate, EndDate, Status, WarrantyCenter) VALUES
 (1, 6, '2025-03-19', '2027-03-19', N'Còn hiệu lực', N'Trung tâm bảo hành ASUS Hà Nội'),
 (2, 7, '2025-03-20', '2026-03-20', N'Còn hiệu lực', N'Trung tâm bảo hành Akko TP. Hồ Chí Minh');
 GO
+
 --------------------------------------------------------------------------------------------------------
 --Tạo View
 -- 1. Xem số lượng sản phẩm đã bán trong ngày
@@ -219,7 +253,6 @@ JOIN Product p ON od.ProductID = p.ProductID
 WHERE CAST(o.OrderDate AS DATE) = CAST(GETDATE() AS DATE)
 GROUP BY od.ProductID, p.ProductName;
 GO
-
 
 -- 3. Xem số hàng còn lại trong kho
 CREATE VIEW View_StockQuantity AS
@@ -235,6 +268,27 @@ JOIN Customer c ON o.CustomerID = c.CustomerID
 LEFT JOIN Employee e ON o.EmployeeID = e.EmployeeID
 WHERE o.Status = N'Chờ xử lý';
 GO
+-- 5. Xem các sản phẩm đã hết hạn bảo hành
+CREATE VIEW view_ExpiredWarranties
+AS
+SELECT 
+    w.WarrantyID,
+    w.ProductID,
+    p.ProductName,
+    w.CustomerID AS WarrantyCustomerID,
+    w.StartDate,
+    w.EndDate,
+    w.Status,
+    w.WarrantyCenter
+FROM 
+    Warranty w
+JOIN Product p ON w.ProductID = p.ProductID
+JOIN Customer c ON w.CustomerID = c.CustomerID
+WHERE 
+    w.EndDate < GETDATE()
+    AND w.Status = N'Hết hạn';
+GO
+
 ---------------------------------------------------------------------------------------------------------
 --Tạo Trigger
 --1.Trigger đặt trạng thái đơn hàng là Pending khi tạo mới
@@ -284,6 +338,7 @@ BEGIN
        OR EXISTS (SELECT 1 FROM deleted WHERE deleted.OrderID = o.OrderID);
 END;
 GO
+
 -- ======================================================
 -----------------/* Thêm các Funtion*/----------------
 -- ======================================================
@@ -396,6 +451,25 @@ BEGIN
     DELETE FROM Product WHERE ProductID = @ProductID;
 END;
 GO
+
+-- 01.06  Lấy các sản phẩm được bán vào hôm nay
+CREATE PROCEDURE spGetSoldProductsToday
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        OrderDetail.ProductID, 
+        Product.ProductName, 
+        SUM(OrderDetail.Quantity) AS TotalSold, 
+        SUM(OrderDetail.Quantity * OrderDetail.UnitPrice) AS TotalAmount
+    FROM OrderDetail
+    JOIN [Order] ON OrderDetail.OrderID = [Order].OrderID
+    JOIN Product ON OrderDetail.ProductID = Product.ProductID
+    WHERE CAST([Order].OrderDate AS DATE) = CAST(GETDATE() AS DATE)
+    GROUP BY OrderDetail.ProductID, Product.ProductName
+END
+
 
 -- =============================================
 -- 02. Stored Procedure cho bảng Customer
@@ -709,7 +783,8 @@ BEGIN
 END;
 GO
 
--- 08.05. Gia hạn bảo hành
+
+-- 08.06  Gia hạn bảo hành
 CREATE PROCEDURE spExtendWarranty
     @WarrantyID INT,
     @NewEndDate DATE
@@ -717,8 +792,19 @@ AS
 BEGIN
     UPDATE Warranty
     SET EndDate = @NewEndDate
-    WHERE WarrantyID = @WarrantyID;
-END;
+    WHERE WarrantyID = @WarrantyID
+END
+GO
+
+-- Lấy các sản phẩm hết hạn bảo hành
+CREATE PROCEDURE GetExpiredWarrantyProducts
+AS
+BEGIN
+    SELECT p.ProductID, p.ProductName, w.EndDate
+    FROM Products p
+    JOIN Warranty w ON p.ProductID = w.ProductID
+    WHERE w.EndDate < GETDATE()  -- So sánh với ngày hiện tại
+END
 GO
 
 -- =============================================
@@ -874,177 +960,10 @@ BEGIN
 END
 
 GO
+
 -- =============================================
--- 10. Các Stored Procedure khác
+-- 10. Stored Procedure cho bảng import và import details
 -- =============================================
-
--- 10.01. Lấy thông tin người dùng theo Username
-CREATE PROCEDURE spGetUserInfoByUsername
-    @Username NVARCHAR(255)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    DECLARE @UserType NVARCHAR(50);
-    DECLARE @CustomerID INT;
-    DECLARE @EmployeeID INT;
-
-    SELECT 
-        @UserType = UserType,
-        @CustomerID = CustomerID,
-        @EmployeeID = EmployeeID
-    FROM Account
-    WHERE Username = @Username;
-
-    IF @UserType = 'Customer'
-    BEGIN
-        SELECT 
-            a.Username, a.Email, c.CustomerID,
-            c.FullName, c.Phone, c.Address,
-            'Customer' AS Role
-        FROM Customer c
-        JOIN Account a ON c.CustomerID = a.CustomerID
-        WHERE c.CustomerID = @CustomerID;
-    END
-    ELSE
-    BEGIN
-        SELECT 
-            a.Username, a.Email, e.EmployeeID,
-            e.FullName, e.Phone, e.Address, e.Position, e.Salary, e.HireDate, e.Status,
-            @UserType AS Role
-        FROM Employee e
-        JOIN Account a ON e.EmployeeID = a.EmployeeID
-        WHERE e.EmployeeID = @EmployeeID;
-    END
-END;
-GO
-
--- 10.02. Lấy đơn hàng của khách theo Username
-CREATE PROCEDURE spGetOrdersByCustomerUsername
-    @Username NVARCHAR(100)
-AS
-BEGIN
-    SET NOCOUNT ON;
-
-    SELECT 
-        o.OrderID, o.OrderDate, o.TotalAmount, o.Status, o.PaymentMethod, o.ShippingAddress,
-        c.FullName AS CustomerName,
-        e.FullName AS EmployeeName
-    FROM [Order] o
-    INNER JOIN Customer c ON o.CustomerID = c.CustomerID
-    INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID
-    INNER JOIN Account a ON c.CustomerID = a.CustomerID
-    WHERE a.Username = @Username;
-END;
-GO
-
--- 10.03. Lấy thông tin sản phẩm (kèm hình ảnh)
-CREATE PROCEDURE spLayTenHinhAnh
-    @ProductID INT
-AS
-BEGIN
-    SELECT SupplierID, ProductName, Price, Description, Image
-	FROM Product
-    WHERE ProductID = @ProductID;
-END;
-GO
-----------------------------------------------
--- Stored Procedure có kèm transaction
-CREATE TYPE OrderDetailsType AS TABLE --Dữ liệu người dùng tự định nghĩa
-(
-    ProductID INT,
-    Quantity INT,
-    Price DECIMAL(18,2)
-);
-GO
-------------------------------------
-CREATE PROCEDURE CreateFullOrder
-    @CustomerID INT,
-    @EmployeeID INT,
-    @OrderDate DATETIME,
-    @TotalAmount DECIMAL(18,2),
-    @PaymentMethod NVARCHAR(50),
-    @ShippingAddress NVARCHAR(255),
-    @OrderDetails OrderDetailsType READONLY,  -- Table-valued parameter
-    @NewOrderID INT OUTPUT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    BEGIN TRY
-        BEGIN TRANSACTION;
-
-        -- 1. Insert vào bảng Order (Không truyền @Status nữa)
-        INSERT INTO [Order] (
-            CustomerID, EmployeeID, OrderDate, TotalAmount,
-            PaymentMethod, ShippingAddress
-        ) VALUES (
-            @CustomerID, @EmployeeID, @OrderDate, @TotalAmount,
-            @PaymentMethod, @ShippingAddress
-        );
-
-        -- 2. Lấy ID đơn hàng mới
-        SET @NewOrderID = SCOPE_IDENTITY();
-
-        -- 3. Insert vào OrderDetails từ Table-Valued Parameter
-        INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price)
-        SELECT @NewOrderID, ProductID, Quantity, Price
-        FROM @OrderDetails;
-
-        COMMIT TRANSACTION;
-    END TRY
-    BEGIN CATCH
-        ROLLBACK TRANSACTION;
-        THROW;
-    END CATCH
-END;
-GO
-
--- ======================================================
------------------/* USER VA PHAN QUYEN*/----------------
--- ======================================================
--- Trong database LaptopStore2
-USE LaptopStore2;
-
--- Tạo các ROLE nếu chưa có
-CREATE ROLE dbAdmin;
-CREATE ROLE dbEmployee;
-CREATE ROLE dbCustomer;
-
--- Gán quyền cho từng ROLE
--- Quyền cho dbAdmin – full access:
-GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::dbo TO dbAdmin;
-
--- Quyền cho dbEmployee – thao tác với đơn hàng, khách, sản phẩm:
--- Quyền đọc/ghi cho các bảng cần thiết
-GRANT SELECT ON Account TO dbEmployee;
-GRANT SELECT ON Product TO dbEmployee;
-GRANT SELECT, INSERT ON [Order] TO dbEmployee;
-GRANT SELECT, INSERT ON OrderDetails TO dbEmployee;
-GRANT SELECT ON Customer TO dbEmployee;
-GRANT UPDATE ON Stock TO dbEmployee;
-
--- Cấp quyền thực thi toàn bộ Stored Procedures & Functions cho dbEmployee
-GRANT EXECUTE TO dbEmployee;
-GO
-
--- Quyền cho dbCustomer – chỉ được xem các bảng cần thiết mà không lọc theo username:
--- Gán quyền SELECT cho dbCustomer trên các bảng cần thiết
-GRANT SELECT ON Account TO dbCustomer;
-GRANT SELECT ON Customer TO dbCustomer;
-GRANT SELECT ON [Order] TO dbCustomer;
-GRANT SELECT ON OrderDetails TO dbCustomer;
-GRANT SELECT ON Product TO dbCustomer;
-
--- Cấp quyền thực thi toàn bộ Stored Procedures & Functions cho dbCustomer
-GRANT EXECUTE TO dbCustomer;
-GO
-
-
-GRANT EXECUTE ON OBJECT::dbo.spGetProductsByCategory TO dbCustomer;
-GRANT EXECUTE ON OBJECT::dbo.spLayTenHinhAnh TO dbCustomer;
-GRANT EXECUTE ON OBJECT::dbo.spGetOrdersByCustomerUsername TO dbCustomer;
-GRANT EXECUTE ON OBJECT::dbo.spGetUserInfoByUsername TO dbCustomer;
-
 -- Thêm chi tiết nhập hàng
 CREATE PROCEDURE spInsertImportDetail
     @ImportID INT,
@@ -1121,3 +1040,178 @@ BEGIN
     END CATCH
 END;
 GO
+
+-- =============================================
+-- 11. Các Stored Procedure khác
+-- =============================================
+
+-- 11.01. Lấy thông tin người dùng theo Username
+CREATE PROCEDURE spGetUserInfoByUsername
+    @Username NVARCHAR(255)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @UserType NVARCHAR(50);
+    DECLARE @CustomerID INT;
+    DECLARE @EmployeeID INT;
+
+    SELECT 
+        @UserType = UserType,
+        @CustomerID = CustomerID,
+        @EmployeeID = EmployeeID
+    FROM Account
+    WHERE Username = @Username;
+
+    IF @UserType = 'Customer'
+    BEGIN
+        SELECT 
+            a.Username, a.Email, c.CustomerID,
+            c.FullName, c.Phone, c.Address,
+            'Customer' AS Role
+        FROM Customer c
+        JOIN Account a ON c.CustomerID = a.CustomerID
+        WHERE c.CustomerID = @CustomerID;
+    END
+    ELSE
+    BEGIN
+        SELECT 
+            a.Username, a.Email, e.EmployeeID,
+            e.FullName, e.Phone, e.Address, e.Position, e.Salary, e.HireDate, e.Status,
+            @UserType AS Role
+        FROM Employee e
+        JOIN Account a ON e.EmployeeID = a.EmployeeID
+        WHERE e.EmployeeID = @EmployeeID;
+    END
+END;
+GO
+
+-- 11.02. Lấy đơn hàng của khách theo Username
+CREATE PROCEDURE spGetOrdersByCustomerUsername
+    @Username NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        o.OrderID, o.OrderDate, o.TotalAmount, o.Status, o.PaymentMethod, o.ShippingAddress,
+        c.FullName AS CustomerName,
+        e.FullName AS EmployeeName
+    FROM [Order] o
+    INNER JOIN Customer c ON o.CustomerID = c.CustomerID
+    INNER JOIN Employee e ON o.EmployeeID = e.EmployeeID
+    INNER JOIN Account a ON c.CustomerID = a.CustomerID
+    WHERE a.Username = @Username;
+END;
+GO
+
+-- 11.03. Lấy thông tin sản phẩm (kèm hình ảnh)
+CREATE PROCEDURE spLayTenHinhAnh
+    @ProductID INT
+AS
+BEGIN
+    SELECT SupplierID, ProductName, Price, Description, Image
+	FROM Product
+    WHERE ProductID = @ProductID;
+END;
+GO
+----------------------------------------------
+-- 11.04 Stored Procedure có kèm transaction
+CREATE TYPE OrderDetailsType AS TABLE --Dữ liệu người dùng tự định nghĩa
+(
+    ProductID INT,
+    Quantity INT,
+    Price DECIMAL(18,2)
+);
+GO
+------------------------------------
+CREATE PROCEDURE CreateFullOrder
+    @CustomerID INT,
+    @EmployeeID INT,
+    @OrderDate DATETIME,
+    @TotalAmount DECIMAL(18,2),
+    @PaymentMethod NVARCHAR(50),
+    @ShippingAddress NVARCHAR(255),
+    @OrderDetails OrderDetailsType READONLY,  -- Table-valued parameter
+    @NewOrderID INT OUTPUT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- 1. Insert vào bảng Order (Không truyền @Status nữa)
+        INSERT INTO [Order] (
+            CustomerID, EmployeeID, OrderDate, TotalAmount,
+            PaymentMethod, ShippingAddress
+        ) VALUES (
+            @CustomerID, @EmployeeID, @OrderDate, @TotalAmount,
+            @PaymentMethod, @ShippingAddress
+        );
+
+        -- 2. Lấy ID đơn hàng mới
+        SET @NewOrderID = SCOPE_IDENTITY();
+
+        -- 3. Insert vào OrderDetails từ Table-Valued Parameter
+        INSERT INTO OrderDetails (OrderID, ProductID, Quantity, Price)
+        SELECT @NewOrderID, ProductID, Quantity, Price
+        FROM @OrderDetails;
+
+        COMMIT TRANSACTION;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        THROW;
+    END CATCH
+END;
+GO
+
+-- ======================================================
+-----------------/* USER VA PHAN QUYEN*/----------------
+-- ======================================================
+-- Trong database LaptopStore2
+USE LaptopStore2;
+
+-- Tạo các ROLE nếu chưa có
+CREATE ROLE dbAdmin;
+CREATE ROLE dbEmployee;
+CREATE ROLE dbCustomer;
+
+-- Gán quyền cho từng ROLE
+-- Quyền cho dbAdmin – full access:
+GRANT SELECT, INSERT, UPDATE, DELETE ON SCHEMA::dbo TO dbAdmin;
+GRANT EXECUTE TO dbAdmin;
+GO
+
+-- Quyền cho dbEmployee – thao tác với đơn hàng, khách, sản phẩm:
+-- Quyền đọc/ghi cho các bảng cần thiết
+GRANT SELECT ON Account TO dbEmployee;
+GRANT SELECT ON Product TO dbEmployee;
+GRANT SELECT, INSERT ON [Order] TO dbEmployee;
+GRANT SELECT, INSERT ON OrderDetails TO dbEmployee;
+GRANT SELECT ON Customer TO dbEmployee;
+GRANT UPDATE ON Stock TO dbEmployee;
+
+--View
+GRANT SELECT ON View_SoldProductsToday TO dbEmployee;
+
+-- Cấp quyền thực thi toàn bộ Stored Procedures & Functions cho dbEmployee
+GRANT EXECUTE TO dbEmployee;
+GO
+
+-- Quyền cho dbCustomer – chỉ được xem các bảng cần thiết mà không lọc theo username:
+-- Gán quyền SELECT cho dbCustomer trên các bảng cần thiết
+GRANT SELECT ON Account TO dbCustomer;
+GRANT SELECT ON Customer TO dbCustomer;
+GRANT SELECT ON [Order] TO dbCustomer;
+GRANT SELECT ON OrderDetails TO dbCustomer;
+GRANT SELECT ON Product TO dbCustomer;
+
+-- Cấp quyền thực thi toàn bộ Stored Procedures & Functions cho dbCustomer
+GRANT EXECUTE TO dbCustomer;
+GO
+
+GRANT EXECUTE ON OBJECT::dbo.spGetProductsByCategory TO dbCustomer;
+GRANT EXECUTE ON OBJECT::dbo.spLayTenHinhAnh TO dbCustomer;
+GRANT EXECUTE ON OBJECT::dbo.spGetOrdersByCustomerUsername TO dbCustomer;
+GRANT EXECUTE ON OBJECT::dbo.spGetUserInfoByUsername TO dbCustomer;
