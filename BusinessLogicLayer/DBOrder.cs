@@ -73,12 +73,6 @@ namespace BusinessLogicLayer
             return db.ExecuteQueryDataSet(query, CommandType.Text, null);
         }
 
-        // Lấy thông tin nhân viên xử lý đơn hàng
-        public DataSet GetEmployeeInfo(int EmployeeID)
-        {
-            return db.ExecuteQueryDataSet("spGetEmployeeInfo", CommandType.StoredProcedure,
-                new SqlParameter("@EmployeeID", EmployeeID));
-        }
 
         // Tạo đơn hàng + chi tiết đơn hàng (TVP + Output)
         public bool CreateFullOrder(ref string err, int CustomerID, int EmployeeID, DateTime OrderDate,

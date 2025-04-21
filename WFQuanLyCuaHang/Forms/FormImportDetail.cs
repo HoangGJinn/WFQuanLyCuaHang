@@ -162,17 +162,17 @@ namespace WFQuanLyCuaHang.Forms
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             // Kiểm tra xem có dòng nào được chọn trong DataGridView không
-            if (dgvImportDetail.SelectedRows.Count == 0)
+            if (dgvImportDetail.CurrentRow == null)
             {
                 MessageBox.Show("Chọn một chi tiết nhập hàng để sửa", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+            DataGridViewRow row = dgvImportDetail.CurrentRow;
 
             // Kích hoạt chế độ chỉnh sửa
             Them = false;
 
             // Lấy dòng được chọn và gán dữ liệu lên các textbox
-            DataGridViewRow row = dgvImportDetail.SelectedRows[0];
             txtImportID.Text = row.Cells["ImportID"].Value?.ToString() ?? "";
             txtProductID.Text = row.Cells["ProductID"].Value?.ToString() ?? "";
             txtQuantity.Text = row.Cells["Quantity"].Value?.ToString() ?? "";
@@ -214,7 +214,7 @@ namespace WFQuanLyCuaHang.Forms
                 int quantity = int.Parse(txtQuantity.Text);
                 decimal price = decimal.Parse(txtPrice.Text);
 
-                if (Them)
+                if (Them) // Nếu đang thêm mới
                 {
                     // Gọi hàm thêm mới chi tiết phiếu nhập
                     bool result = dbid.AddImportDetail(ref err, importID, productID, quantity, price);
@@ -229,10 +229,20 @@ namespace WFQuanLyCuaHang.Forms
                         MessageBox.Show("Thêm thất bại rồi bạn eyy!\nLỗi: " + err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                else
+                else // Nếu đang sửa
                 {
-                    // Trường hợp sửa: Nếu bạn có chức năng sửa thì viết thêm ở đây
-                    MessageBox.Show("Hiện tại chỉ đang làm chức năng Thêm. Nếu muốn sửa thì mình code tiếp nha!", "Thông báo");
+                    // Gọi hàm cập nhật chi tiết phiếu nhập
+                    bool result = dbid.UpdateImportDetail(ref err, importID, productID, quantity, price);
+
+                    if (result)
+                    {
+                        LoadData(); // Load lại dữ liệu lên DataGridView
+                        MessageBox.Show("Cập nhật chi tiết nhập hàng thành công rồi đó bạn!", "Yeahh", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cập nhật thất bại rồi bạn eyy!\nLỗi: " + err, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             catch (FormatException)
@@ -279,6 +289,7 @@ namespace WFQuanLyCuaHang.Forms
             // Cho phép các nút thao tác (tuỳ bạn thêm nút nào thì bật tương ứng)
             this.btnXoa.Enabled = true;
             this.btnThem.Enabled = false;
+            this.btnUpdate.Enabled = true;
 
             // Lấy dòng đang chọn
             DataGridViewRow row = dgvImportDetail.Rows[e.RowIndex];
@@ -291,5 +302,7 @@ namespace WFQuanLyCuaHang.Forms
             txtPrice.Text = row.Cells["Price"].Value?.ToString() ?? "";
             txtImportDate.Text = row.Cells["ImportDate"].Value?.ToString() ?? "";
         }
+
+
     }
 }
