@@ -66,9 +66,33 @@ namespace BusinessLogicLayer
         }
         public bool UpdateImportStatus(ref string err, int ImportID, string Status)
         {
-            return db.MyExecuteNonQuery("spUpdateImportStatus", CommandType.StoredProcedure, ref err,
+            // Gọi stored procedure để cập nhật trạng thái
+            bool result = db.MyExecuteNonQuery("spUpdateImportStatus", CommandType.StoredProcedure, ref err,
                 new SqlParameter("@ImportID", ImportID),
                 new SqlParameter("@Status", Status));
+
+            // Nếu cập nhật thành công và trạng thái là "Hoàn thành", gọi stored procedure cập nhật tồn kho
+            if (result && Status == "Hoàn thành")
+            {
+                bool stockUpdated = db.MyExecuteNonQuery("spUpdateStockFromImport", CommandType.StoredProcedure, ref err,
+                    new SqlParameter("@ImportID", ImportID));
+
+                if (!stockUpdated)
+                {
+                    err = "Cập nhật tồn kho thất bại sau khi chuyển trạng thái.";
+                    return false;
+                }
+            }
+
+            return result;
+        }
+        public bool UpdateStockFromImport(ref string err, int ImportID)
+        {
+            // Gọi stored procedure để cập nhật tồn kho
+            bool result = db.MyExecuteNonQuery("spUpdateStockFromImport", CommandType.StoredProcedure, ref err,
+                new SqlParameter("@ImportID", ImportID));
+
+            return result;
         }
 
 
@@ -135,5 +159,7 @@ namespace BusinessLogicLayer
                 return false;
             }
         }
+
+
     }
 }

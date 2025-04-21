@@ -1,9 +1,9 @@
 ﻿
 -- Tạo cơ sở dữ liệu
-CREATE DATABASE LaptopStore3;
+CREATE DATABASE LaptopStore2;
 GO
 
-USE LaptopStore3;
+USE LaptopStore2;
 GO
 
 
@@ -1045,6 +1045,7 @@ GRANT EXECUTE ON OBJECT::dbo.spLayTenHinhAnh TO dbCustomer;
 GRANT EXECUTE ON OBJECT::dbo.spGetOrdersByCustomerUsername TO dbCustomer;
 GRANT EXECUTE ON OBJECT::dbo.spGetUserInfoByUsername TO dbCustomer;
 
+GO
 -- Thêm chi tiết nhập hàng
 CREATE PROCEDURE spInsertImportDetail
     @ImportID INT,
@@ -1074,6 +1075,70 @@ BEGIN
     FROM ImportDetail id
     INNER JOIN [Import] i ON id.ImportID = i.ImportID
     WHERE id.ImportID = @ImportID
+END
+GO
+-- Xóa phiếu nhập
+CREATE PROCEDURE spDeleteImport
+    @ImportID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Xóa chi tiết trước
+        DELETE FROM ImportDetail
+        WHERE ImportID = @ImportID;
+
+        -- Xóa phiếu nhập chính
+        DELETE FROM Import
+        WHERE ImportID = @ImportID;
+
+        COMMIT;
+    END TRY
+    BEGIN CATCH
+        ROLLBACK;
+        THROW;
+    END CATCH
+END;
+GO
+
+--Cập nhật trạng thái phiếu nhập
+CREATE PROCEDURE spUpdateImportStatus
+    @ImportID INT,
+    @Status NVARCHAR(50)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật trạng thái phiếu nhập
+    UPDATE Import
+    SET Status = @Status
+    WHERE ImportID = @ImportID;
+END
+GO
+
+--Cập nhật stock khi trạng thái đơn hàng là hoàn thành
+CREATE PROCEDURE spUpdateStockFromImport
+    @ImportID INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Cập nhật tồn kho dựa trên ImportID
+    MERGE Stock AS target
+    USING (
+        SELECT ProductID, Quantity
+        FROM ImportDetail
+        WHERE ImportID = @ImportID
+    ) AS source
+    ON target.ProductID = source.ProductID
+    WHEN MATCHED THEN
+        UPDATE SET Quantity = target.Quantity + source.Quantity
+    WHEN NOT MATCHED THEN
+        INSERT (ProductID, Quantity)
+        VALUES (source.ProductID, source.Quantity);
 END
 GO
 
